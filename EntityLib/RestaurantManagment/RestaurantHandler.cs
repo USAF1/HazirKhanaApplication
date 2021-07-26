@@ -66,62 +66,68 @@ namespace EntityLib.RestaurantManagment
             }
         }
 
-        //public static void RestaurantAdminUpdate(Restaurant entity)
-        //{
-        //    using (ApplicationDb context = new ApplicationDb())
-        //    {
-        //        if (entity != null)
-        //        {
-
-        //            //Restaurant find = (from Restaurant in context.Restaurants where Restaurant.Id == entity.Id select Restaurant).FirstOrDefault();
+        public static void RestaurantAdminUpdate(Restaurant entity)
+        {
+            using (ApplicationDb context = new ApplicationDb())
+            {
 
 
-        //            //context.Restaurants.Update(find);
-        //            //context.Restaurants.UpdateRange()
-        //            //context.SaveChanges();
+                if (entity != null)
+                {
 
-        //            //Restaurant find =  context.Attach<Restaurant>(entity);
+                    if (entity.Products != null)
+                    {
+                        foreach (var product in entity.Products)
+                        {
+                            context.Entry(product).State = EntityState.Unchanged;
+
+                        }
+                    }
+                    if (entity.City != null)
+                    {
+                        context.Entry(entity.City).State = EntityState.Unchanged;
+                    }
+                    if (entity.Provience != null)
+                    {
+                        context.Entry(entity.Provience).State = EntityState.Unchanged;
+                    }
+                    if (entity.RestaurantCuisines != null)
+                    {
+                        foreach (var cuisine in entity.RestaurantCuisines)
+                        {
+                            context.Entry(cuisine).State = EntityState.Unchanged;
+
+                        }
+                    }
+                    DeleteCuisineRestaurant(entity.Id);
+                    context.Update(entity);
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        public static void DeleteCuisineRestaurant(int id)
+        {
+            List<CuisineRestaurant> avaliableList = new List<CuisineRestaurant>();
+
+            using (ApplicationDb context = new ApplicationDb())
+            {
+                avaliableList = (from CuisineRestaurant in context.CuisineRestaurants where CuisineRestaurant.RestaurantsId == id select CuisineRestaurant).Include(x=>x.Cuisines).Include(y=>y.Restaurants).ToList();
+
+                if (avaliableList != null)
+                {
+                    foreach (var item in avaliableList)
+                    {
+                        context.Entry(item.Cuisines).State = EntityState.Unchanged;
+                        context.Entry(item.Restaurants).State = EntityState.Unchanged;
+                    }
+                }
+                context.CuisineRestaurants.RemoveRange(avaliableList);
+                context.SaveChanges();
+            }
 
 
-        //            if (entity.Products != null)
-        //            {
-        //                foreach (var product in entity.Products)
-        //                {
-        //                    context.Entry(product).State = EntityState.Unchanged;
-
-        //                }
-        //            }
-        //            if (entity.Cuisines != null)
-        //            {
-        //                foreach (var cuisine in entity.Cuisines)
-        //                {
-        //                    context.Entry(cuisine).State = EntityState.Unchanged;
-
-
-        //                }
-        //            }
-        //            if (entity.City != null)
-        //            {
-        //                context.Entry(entity.City).State = EntityState.Unchanged;
-        //            }
-        //            if (entity.Provience != null)
-        //            {
-        //                context.Entry(entity.Provience).State = EntityState.Unchanged;
-        //            }
-        //            if (entity.RestaurantCuisines != null)
-        //            {
-        //                foreach (var cuisine in entity.RestaurantCuisines)
-        //                {
-        //                    context.Entry(cuisine).State = EntityState.Unchanged;
-
-        //                }
-        //            }
-
-        //            context.Update(entity);
-        //            context.SaveChanges();
-        //        }
-        //    }
-        //}
+        } 
 
 
     }

@@ -1,0 +1,18 @@
+﻿@model ProvienceModel
+<div class="col-md-7">
+
+    <div style="border: 2px solid black;">
+        <h4 class="fw-bold p-3" style="background-color: #FAFAFA;">Add Provience</h4>
+        <form asp-action="AddProvience" asp-controller="Setting" class="p-3">
+
+            <label for="name">Name *</label>
+            <input type="text" asp-for="Name" class="form-control mt-2 w-75 p-2" required style="background-color: #FAFAFA;" placeholder=" Enter Provience Name"><br>
+
+            <br />
+
+            <button type="submit" class="myBtn mt-2">Add Provience</button>
+        </form>
+    </div>
+
+</div>
+<hr>

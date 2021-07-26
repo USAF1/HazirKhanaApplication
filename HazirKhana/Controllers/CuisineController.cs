@@ -23,6 +23,7 @@ namespace HazirKhana.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult AddCuisine(CuisineModel model)
         {
             Cuisine entity = model.ToCuisineEntity();

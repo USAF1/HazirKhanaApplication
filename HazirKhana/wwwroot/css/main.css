@@ -281,6 +281,27 @@ body {
         padding: 5px;
     }
 
+.multipleTables2 {
+    background-color: #FAFAFA;
+    padding: 10px 30px;
+}
+
+    .multipleTables2 a {
+        text-decoration: none;
+        color: black;
+        font-size: 18px;
+        font-weight: 500;
+        border-bottom: none;
+        outline: none;
+        margin-left: 20px;
+    }
+
+    .multipleTables2 .tab-item.active {
+        color: #FFB400;
+        font-size: 22px;
+        padding: 5px;
+    }
+
 .myBtn {
     background-color: #413C58;
     color: white;

@@ -119,58 +119,61 @@ namespace HazirKhana.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult AdminRestaurantUpdate(RestaurantModel model)
-        //{
-        //    if (model.City != null)
-        //    {
-        //        model.City = LocationHandler.GetCity(model.City.Id).ToCityModel();
-        //    }
-        //    if (model.Provience != null)
-        //    {
-        //        model.Provience = LocationHandler.GetProvience(model.Provience.Id).ToProvienceModel();
-        //    }
+        [HttpPost]
+        public IActionResult AdminRestaurantUpdate(RestaurantModel model)
+        {
+            if (model.City != null)
+            {
+                model.City = LocationHandler.GetCity(model.City.Id).ToCityModel();
+            }
+            if (model.Provience != null)
+            {
+                model.Provience = LocationHandler.GetProvience(model.Provience.Id).ToProvienceModel();
+            }
 
 
-        //    Restaurant restaurant = model.ToRestaurantEntity();
-
-        //    List<Cuisine> selectedCuisine = new List<Cuisine>();
-
-        //    foreach (var SelectedCuisine in model.Cuisines)
-        //    {
-        //        if (SelectedCuisine.IsChecked == true)
-        //        {
-        //            selectedCuisine.Add(SelectedCuisine.ToCuisineEntity());
-        //        }
-
-        //    }
-        //    Restaurant restaurantModel = RestaurantHandler.GetRestaurant(model.Id);
+            Restaurant restaurant = model.ToRestaurantEntity();
 
 
-        //    if (model.Logo != null)
-        //    {
-        //        IFormFile logo = Request.Form.Files["logo"];
-        //        restaurant.Logo = logo.FromStringToByteArray();
-        //    }
-        //    else
-        //    {
-        //        restaurant.Logo = restaurantModel.Logo;
-        //    }
-        //    if (model.Banner != null)
-        //    {
-        //        IFormFile banner = Request.Form.Files["banner"];
-        //        restaurant.Banner = banner.FromStringToByteArray();
-        //    }
-        //    else
-        //    {
-        //        restaurant.Banner = restaurantModel.Banner;
-        //    }
-        //    restaurant.Cuisines = selectedCuisine;
+            List<CuisineRestaurant> cusines = new List<CuisineRestaurant>();
 
-        //    RestaurantHandler.RestaurantAdminUpdate(restaurant);
+            foreach (var cuisine in model.Cuisines)
+            {
+                if (cuisine.IsChecked == true)
+                {
+                    cusines.Add(new CuisineRestaurant { Cuisines = cuisine.ToCuisineEntity(), CuisinesId = cuisine.Id});
+                }
+            }
 
-        //    return RedirectToAction("AdminRestaurantsList");
-        //}
+            restaurant.CuisineRestaurants = cusines;
+
+
+            Restaurant restaurantModel = RestaurantHandler.GetRestaurant(model.Id);
+
+
+            if (model.Logo != null)
+            {
+                IFormFile logo = Request.Form.Files["logo"];
+                restaurant.Logo = logo.FromStringToByteArray();
+            }
+            else
+            {
+                restaurant.Logo = restaurantModel.Logo;
+            }
+            if (model.Banner != null)
+            {
+                IFormFile banner = Request.Form.Files["banner"];
+                restaurant.Banner = banner.FromStringToByteArray();
+            }
+            else
+            {
+                restaurant.Banner = restaurantModel.Banner;
+            }
+
+            RestaurantHandler.RestaurantAdminUpdate(restaurant);
+
+            return RedirectToAction("AdminRestaurantList");
+        }
 
         public IActionResult AdminProductList()
         {

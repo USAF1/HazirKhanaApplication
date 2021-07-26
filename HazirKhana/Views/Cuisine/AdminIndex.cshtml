@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "AdminIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<CuisineModel> cuisines = (List<CuisineModel>)ViewData["Cuisines"];
+}
+
+<partial name="~/views/Partials/_RestaurantAdminAnalytics.cshtml" />
+
+<br /><br />
+
+<div class="container bg-white" style="padding: 0px 12px !important;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <div class="row">
+        <h2 class=" fw-bold p-3" style="background-color: #413C58; color: white;"> Cusines </h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <h4 class="fw-bold p-3">Cusines List</h4>
+                    <div style="border: 2px solid black;">
+                        <table class="table3 p-2 " style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th> Id #</th>
+                                    <th>Name</th>
+                                    <th>Option</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (cuisines != null)
+                                {
+
+                                    foreach (var cuisine in cuisines)
+                                    {
+                                        <tr>
+                                            <td class="p-2">@cuisine.Id </td>
+                                            <td>@cuisine.Name</td>
+                                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table> <hr>
+                        <div class="d-flex mt-5 justify-content-end">
+                            <p class="mx-2 btn fw-bold">Previous</p>
+                            <p class="mx-2 btn fw-bold">Next</p>
+                        </div>
+                    </div>
+                </div>
+                <partial name="~/views/Cuisine/_AddCuisine.cshtml" />
+            </div>
+        </div>
+
+    </div>
+    <br /><br /><br /><br />
+
+
+</div>
+
+<br />
+<br />
+<br />
+
+

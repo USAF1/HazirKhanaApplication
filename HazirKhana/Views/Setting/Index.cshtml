@@ -1,0 +1,223 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<ProvienceModel> proviences = (List<ProvienceModel>)ViewData["Proviences"];
+    List<CityModel> cities = (List<CityModel>)ViewData["Cities"];
+    List<SelectListItem> ProvienceList = (List<SelectListItem>)ViewData["ProvienceList"];
+
+}
+
+
+<partial name="~/views/Partials/_adminAnalytics.cshtml" />
+
+
+<div class="p-2">
+    <div class="container  bg-white" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div class="row mt-5">
+            <ul class="nav multipleTables2" role="tablist">
+                <li class="nav-item nav-tabs btn">
+                    <a href="#collapseLocation" class="tab-item" role="tab" data-toggle="tab">
+                        Location
+                    </a>
+                </li>
+                <li class="nav-item nav-tabs btn">
+                    <a href="#collapseRoles" class="tab-item" role="tab" data-toggle="tab">
+                        Roles
+                    </a>
+                </li>
+
+
+            </ul>
+            <div class="tab-content">
+                <!--******************CollapseLocation*******************************-->
+                <div class="active tab-pane" role="tabpanel" id="collapseLocation">
+                    <div class="container">
+                        <h3 class="mt-4">Cities</h3>
+                        <p>add cities so it could be available to add restaurant</p>
+                        <div class="row">
+                            <div class="col-md-5">
+
+                                <div style="border: 2px solid black; margin-bottom: 40px;">
+                                    <h4 class="fw-bold p-3" style="background-color: #FAFAFA;">Provience List</h4>
+                                    @if (proviences != null)
+                                    {
+
+                                        <table class="table3 p-2 " style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <th> Id #</th>
+                                                    <th>Name</th>
+                                                    <th>Option</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var provience in proviences)
+                                                {
+                                                    <tr>
+                                                        <td class="p-2">@provience.Id </td>
+                                                        <td>@provience.Name</td>
+                                                        <td><i class="fas btn fa-eye fa-2x"></i></td>
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    }
+                                    else { 
+                                    <h4>No Provience Fouynd</h4>
+                                    }
+
+                                    <hr>
+                                    <div class="d-flex mt-5 justify-content-end">
+                                        <p class="mx-2 btn fw-bold">Previous</p>
+                                        <p class="mx-2 btn fw-bold">Next</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <partial name="~/views/Setting/_AddProvience.cshtml" />
+
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-5">
+
+                                <div style="border: 2px solid black; margin-bottom: 40px;">
+                                    <h4 class="fw-bold p-3" style="background-color: #FAFAFA;">Cities List</h4>
+                                    <table class="table3 p-2 " style="width: 100%;">
+                                        @if (cities != null)
+                                        {
+
+                                            <table class="table3 p-2 " style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th> Id #</th>
+                                                        <th>Name</th>
+                                                        <th>Option</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var city in cities)
+                                                    {
+                                                        <tr>
+                                                            <td class="p-2">@city.Id </td>
+                                                            <td>@city.Name</td>
+                                                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                                                        </tr>
+                                                    }
+
+                                                </tbody>
+                                            </table>
+                                        }
+                                        else
+                                        {
+                                            <h4>No City Fouynd</h4>
+                                        }
+                                        <hr>
+                                        <div class="d-flex mt-5 justify-content-end">
+                                            <p class="mx-2 btn fw-bold">Previous</p>
+                                            <p class="mx-2 btn fw-bold">Next</p>
+                                        </div>
+</div>
+                            </div>
+
+                            <partial name="~/views/Setting/_AddCity.cshtml" />
+
+                        </div>
+                    </div>
+                </div>
+                <!--****************Collapse Roles******************************************-->
+                <div class="tab-pane" role="tabpanel" id="collapseRoles">
+                    <div class="container">
+                        <h3 class="mt-4">Roles</h3>
+                        <p>Please Add Roles</p>
+                        <div class="row">
+                            <div class="col-md-5">
+
+                                <div style="border: 2px solid black; margin-bottom: 40px;">
+                                    <h4 class="fw-bold p-3" style="background-color: #FAFAFA;">Roles List</h4>
+                                    <table class="table3 p-2 " style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th> Id #</th>
+                                                <th>Name</th>
+                                                <th>Option</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="p-2">001 </td>
+                                                <td>John ali</td>
+                                                <td><i class="fas btn fa-eye fa-2x"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2">001 </td>
+                                                <td>John ali</td>
+                                                <td><i class="fas btn fa-eye fa-2x"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2">001 </td>
+                                                <td>John ali</td>
+                                                <td><i class="fas btn fa-eye fa-2x"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2">001 </td>
+                                                <td>John ali</td>
+                                                <td><i class="fas btn fa-eye fa-2x"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-2">001 </td>
+                                                <td>John ali</td>
+                                                <td><i class="fas btn fa-eye fa-2x"></i></td>
+                                            </tr>
+
+
+
+                                        </tbody>
+                                    </table> <hr>
+                                    <div class="d-flex mt-5 justify-content-end">
+                                        <p class="mx-2 btn fw-bold">Previous</p>
+                                        <p class="mx-2 btn fw-bold">Next</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+
+                                <div style="border: 2px solid black;">
+                                    <h4 class="fw-bold p-3" style="background-color: #FAFAFA;">Add Role</h4>
+                                    <form class="p-3">
+
+                                        <label for="name">Name *</label>
+                                        <input type="text" class="form-control mt-2 w-75 p-2" required style="background-color: #FAFAFA;" placeholder=" Enter Role "><br>
+
+                                        <br />
+
+                                        <button type="submit" class="myBtn mt-2">Add Role</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                            <hr>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--************************CollapseCusions******************-->
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+
+
+@section alert{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+}

@@ -10,6 +10,44 @@ namespace EntityLib.LocationManagment
     public class LocationHandler
     {
 
+        public static void AddCity(City entity)
+        {
+            if (entity!=null)
+            {
+                using (ApplicationDb context =new ApplicationDb())
+                {
+                    if (entity.Provience != null)
+                    {
+                        context.Entry(entity.Provience).State = EntityState.Unchanged;
+                    }
+                    if (entity.Restaurants != null)
+                    {
+                        foreach (var item in entity.Restaurants)
+                        {
+                            context.Entry(item).State = EntityState.Unchanged;
+                        }
+                        
+                    }
+
+                    context.Cities.Add(entity);
+                    context.SaveChanges();
+                }
+            }
+        }
+
+
+        public static void AddProvience(Provience entity)
+        {
+            if (entity != null)
+            {
+                using (ApplicationDb context = new ApplicationDb())
+                {
+                    context.Proviences.Add(entity);
+                    context.SaveChanges();
+                }
+            }
+        }
+
         public static List<City> GetCities()
         {
             using (ApplicationDb context = new ApplicationDb())
@@ -33,12 +71,22 @@ namespace EntityLib.LocationManagment
             }
         }
 
+
+
         public static Provience GetProvience(int Id)
         {
             using (ApplicationDb context = new ApplicationDb())
             {
 
                 return context.Proviences.Find(Id);
+            }
+        }
+
+        public static Provience GetProvience(string Name)
+        {
+            using (ApplicationDb context = new ApplicationDb())
+            {
+                return (from Provience in context.Proviences where Provience.Name == Name select Provience).FirstOrDefault();
             }
         }
 
