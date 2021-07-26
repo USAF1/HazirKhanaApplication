@@ -1,0 +1,135 @@
+﻿@model RestaurantModel;
+@{
+    ViewData["Title"] = "AdminRestaurantAdd";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<SelectListItem> proviences = (List<SelectListItem>)ViewData["Proviences"];
+    List<SelectListItem> cities = (List<SelectListItem>)ViewData["Cities"];
+    List<SelectListItem> options = (List<SelectListItem>)ViewData["Options"];
+    List<CuisineModel> cuisines = (List<CuisineModel>)ViewData["Cuisines"];
+
+    string[] op = new[] { "Yes", "No" };
+}
+<partial name="~/views/Partials/_adminAnalytics.cshtml" />
+
+<div class="container restaurantTable bg-white">
+    <div class="row">
+
+        <form asp-action="AdminRestaurantAdd" asp-controller="Restaurant" enctype="multipart/form-data">
+            <h1 class="mt-4 p-3">Add Restaurant</h1>
+            <p class="mx-3">Please Fill The Required Form </p> <hr>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <label for="name">Name *</label>
+                    <input type="text" asp-for="Name" class="form-control mt-2 w-75 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter Restaurant Name"><br>
+                    <label for="name">Email *</label>
+                    <input type="email" asp-for="Email" class="form-control mt-2 w-75 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter  Email">
+                </div>
+                <div class="col-md-6">
+                    <label for="name">Contact Mob *</label>
+                    <input type="number" asp-for="ContactMob" class="form-control w-75 mt-2 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter  Contact"><br>
+                    <label for="name">Contact Tel *</label>
+                    <input type="number" asp-for="ConatctTel" class="form-control mt-2 w-75 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter Telephone">
+                </div>
+            </div><hr class="bg-dark mt-4">
+
+            <div class="row mt-4">
+                <label for="address"> Address *</label><br>
+                <textarea asp-for="Address" cols="10" style="resize: none; background-color: #FCFBFB; width: 90%;" class="form-control mt-2 p-2 mx-2" required placeholder="Enter Address" rows="3"></textarea>
+                <div class="col-md-6 mt-3">
+                    <label for="name">Province *</label>
+                    <select asp-for="Provience.Id" asp-items="proviences" style="background-color: #FCFBFB;" class="form-select w-50 mt-2 p-2" id="">
+                    </select>
+                    <label class="mt-4" for="name">Postal Code *</label>
+                    <input type="number" asp-for="PostalCode" class="form-control mt-2 w-50 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter  Postal Code">
+
+                </div>
+                <div class="col-md-6 mt-3">
+                    <label for="name">City *</label>
+                    <select asp-for="City.Id" asp-items="cities" style="background-color: #FCFBFB;" class="form-select w-50 mt-2 p-2" id="">
+                    </select>
+                </div>
+            </div><hr class="mt-5">
+            <br><br>
+            <div class="row">
+                <label for="address"> Description *</label><br>
+                <textarea asp-for="Discription" cols="10" style="resize: none; background-color: #FCFBFB; width: 90%;" class="form-control mt-2 p-2 mx-2" required placeholder="Enter Description" rows="3"></textarea>
+                <label for="" class="mt-4">Select Cuisines</label>
+
+                <div class="form-check form-check-inline mx-4 mt-2">
+
+                    @for (int i = 0; i < cuisines.Count; i++)
+                    {
+                        <div class="form-check form-check-inline mx-3 ">
+                            <input class="form-check-input " id="@cuisines[i].Id" type="checkbox" asp-for="@cuisines[i].IsChecked">
+                            <input type="hidden" asp-for="@cuisines[i].Id" />
+                            <input type="hidden" asp-for="@cuisines[i].Name" />
+                            <label class="form-check-label">@cuisines[i].Name</label>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-6 mt-4">
+                    <label for="name">Sales Tax *</label>
+                    <input type="number" asp-for="SalesTax" class="form-control mt-2 w-75 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter Sales Tax"><br>
+                </div>
+                <div class="col-md-6 mt-4">
+                    <label for="name">Order Load Time  *</label>
+                    <input type="number" asp-for="OrderLedTime" class="form-control w-75 mt-2 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter  Order Load Time in Minutes"><br>
+
+                </div>
+
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6 ">
+                    <label>Reservation *</label>
+                    @foreach (var option in op)
+                    {
+                        <div class="form-check mx-3">
+                            <input class="form-check-input" type="radio" asp-for="Reservation" value="@option" name="Reservation">
+                            <label class="form-check-label" for="Reservation">
+                                @option
+                            </label>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-6">
+                    <label for="name">Percentage Cut Off  *</label>
+                    <input type="number" asp-for="PercentageCutOff" class="form-control w-75 mt-2 p-2" required style="background-color: #FCFBFB;" placeholder=" Percentage Cut Off"><br>
+                </div>
+
+            </div>
+            <hr class="mt-4">
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <label for="logo">Logo *</label>
+                    <input type="file" asp-for="Logo" accept="image/*" name="logo" class="form-control mt-2 w-75 p-2" required style="background-color: #FCFBFB;" placeholder=" Upload Logo "><br>
+
+                </div>
+                <div class="col-md-6">
+                    <label for="name">Banner *</label>
+                    <input type="file" asp-for="Banner" accept="image/*" name="banner" class="form-control w-75 mt-2 p-2" required style="background-color: #FCFBFB;" placeholder="Upload Banner"><br>
+
+                </div>
+
+            </div>
+
+            <button type="submit" class="myBtn mt-2" id="ss">Add Restaurant</button>
+            <br><br>
+
+        </form>
+    </div>
+</div>
+<br />
+<br />
+
+@section alert{
+
+
+    <script>
+
+        $('#ss').alert();
+    </script>
+
+}
+
+
+

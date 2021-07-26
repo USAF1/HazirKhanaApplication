@@ -1,0 +1,332 @@
+body {
+    font-family: 'Rubik';
+    overflow-x: hidden;
+}
+
+.headerIcon {
+    /* padding: 5px 30px; */
+    background-color: #E7EFC5;
+    border-radius: 15px;
+    margin-top: 5px;
+    height: 50px;
+    width: 60px;
+    margin-right: 30px;
+}
+
+    .headerIcon a i {
+        padding: 8px 17px;
+    }
+
+.input-group-append {
+    margin-left: -140px;
+    background-color: #413C58;
+    height: 63px;
+    margin-top: 45px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.icon {
+    padding: 10px 15px;
+    color: #8466ff;
+    width: 70px;
+    text-align: left;
+}
+
+.navIconImage {
+    width: 70px;
+    height: 50px;
+    padding: 5px 16px;
+    margin-left: -15px;
+}
+
+.navBtn {
+    margin-top: 0px;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+}
+
+    .navBtn:focus, .navBtn:active:focus, .navBtn.active:focus {
+        outline: none !important;
+        box-shadow: none;
+        background-color: #E7EFC5;
+        border-radius: 20px;
+    }
+
+.datePicker {
+    background-color: #E7EFC5;
+    border-radius: 5px;
+    margin-top: -5px;
+    margin-bottom: 20px;
+}
+
+.cardIconImage {
+    width: 100px;
+    height: 80px;
+}
+
+.iconDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 0.2;
+    margin-top: 20px;
+    justify-content: space-around;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+    .iconDiv:hover {
+        border: 3px solid orange;
+        /* position: static !important; */
+        animation: pulse;
+        animation-duration: 2s;
+    }
+
+    .iconDiv h2 {
+        font-family: 'Rubik';
+        font-weight: 800;
+        font-size: 26px;
+    }
+
+.tablediv {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    margin-bottom: 70px;
+}
+
+.table1 {
+    font-size: 16px;
+    line-height: 1.5;
+    width: 150%;
+    height: 500px;
+    display: inline-block;
+    border-collapse: separate;
+    border-spacing: 40px 10px;
+    overflow: auto;
+    background-color: white;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    border-bottom: none;
+}
+
+.table3 {
+    font-size: 16px;
+    line-height: 1.5;
+    border-collapse: separate;
+    border-spacing: 20px 10px;
+}
+
+.table2 {
+    font-size: 16px;
+    line-height: 1.5;
+    width: 100%;
+    overflow-x: hidden;
+    height: 500px;
+    display: inline-block;
+    border-collapse: separate;
+    border-spacing: 40px 10px;
+    overflow: auto;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-bottom: none;
+}
+
+.dropbtn {
+    /* background-color: #04AA6D; */
+    /* color: white; */
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+}
+
+.dropdown {
+    /* position: relative; */
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    /* position: absolute; */
+    /* background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+    z-index: 1;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 10px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #E7EFC5;
+    border-radius: 20px;
+}
+
+.nustedList a:hover {
+    color: orange;
+}
+
+
+
+.statusBtn {
+    background-color: #E7EFC5;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 12px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #FFB400;
+}
+
+.footer {
+    background-color: #413C58;
+    color: white;
+    justify-content: center;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+}
+
+.badge {
+    position: relative;
+    top: -50px;
+    right: -40px;
+    padding: 3px 6px;
+    border-radius: 50%;
+    color: white;
+}
+
+.loginUserNameBackground:hover {
+    background-color: #E7EFC5 !important;
+}
+
+.restaurantTable {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+    .restaurantTable table {
+        height: 830px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+
+.restaurantProfileImage {
+    width: 230px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: -140px;
+    margin-left: 50px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0px !important;
+}
+
+.collapseButton {
+    margin-left: 20px;
+    font-weight: 700;
+    padding: 10px;
+}
+
+    .collapseButton:active {
+        background-color: #413C58;
+        color: white;
+        outline: #413C58;
+    }
+
+#abc:hover {
+    background-color: #BFD7B5;
+}
+
+.multipleTables {
+    background-color: #FAFAFA;
+    padding: 10px 30px;
+}
+
+    .multipleTables a {
+        text-decoration: none;
+        color: black;
+        font-size: 18px;
+        font-weight: 500;
+        border-bottom: none;
+        outline: none;
+        margin-left: 20px;
+    }
+
+    .multipleTables .tab-item.active {
+        background-color: #413C58;
+        color: white;
+        font-size: 22px;
+        padding: 5px;
+    }
+
+.myBtn {
+    background-color: #413C58;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+
+.restaurantDetailBtn {
+    background-color: lightskyblue;
+    color: white;
+    outline: none !important;
+    border: none;
+    padding: 10px;
+}
+
+
+
+
+.restaurantListCard {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+    .restaurantListCard:hover {
+        border: 3px solid orange;
+        animation: pulse;
+        animation-duration: 2s;
+    }
+
+.singleRestaurantBtn {
+    background-color: #704f9c;
+    padding: 10px 70px;
+    font-weight: 800;
+    margin-top: 10px;
+    font-size: 22px;
+    border-radius: 10px;
+    color: white;
+    float: right;
+    margin-right: 150px;
+    border: none;
+}
+
+.addBtn {
+    background-color: #BFD7B5;
+    border: none;
+    padding: 0px 30px !important;
+    font-weight: 700;
+    border-radius: 10px;
+}
