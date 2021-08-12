@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<UserModel> users = (List<UserModel>)ViewData["Users"];
+
+}
+
+<div class="container mt-5 bg-white" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); padding: 0px;">
+    <div class="d-flex justify-content-between " style="background-color: #413C58; padding: 10px 20px !important;">
+        <h1 class=" text-white">Users List</h1>
+        <a asp-action="AddUser" asp-controller="Users" class="btn-lg  addBtn">Add New</a>
+    </div>
+
+    @if (users != null)
+    {
+
+
+
+
+        <table class="table3 mt-2" style="width: 100%;">
+            <thead class="">
+                <tr>
+                    <th> Id #</th>
+                    <th>Name</th>
+                    <th>Restaurant</th>
+                    <th>Contact</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in users)
+                {
+                <tr>
+                    <td class="p-2">@user.Id</td>
+                    <td>@user.Name</td>
+                    <td>@user.Address</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                    <td><i class="fas btn fa-eye fa-2x"></i></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="d-flex mt-5 mx-5 justify-content-end">
+            <p class="mx-3 btn fw-bold">Previous</p>
+            <p class="mx-3 btn fw-bold">Next</p>
+        </div>
+    }
+    else
+    {
+        <h4>No User Found</h4>
+    }
+
+
+</div>
+
+
+
+<br>
+<br>
+

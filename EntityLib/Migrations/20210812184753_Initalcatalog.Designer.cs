@@ -4,14 +4,16 @@ using EntityLib;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EntityLib.Migrations
 {
     [DbContext(typeof(ApplicationDb))]
-    partial class ApplicationDbModelSnapshot : ModelSnapshot
+    [Migration("20210812184753_Initalcatalog")]
+    partial class Initalcatalog
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

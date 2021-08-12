@@ -1,6 +1,4 @@
-﻿
-using EntityLib.RestaurantCuisineManagment;
-using EntityLib.RestaurantManagment;
+﻿using EntityLib.RestaurantManagment;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,25 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityLib.ProductsManagment
+namespace EntityLib.AddOnManagment
 {
-    public class Product
+    public class AddOn
     {
         public int Id { get; set; }
 
         [Required]
-        [Column(TypeName="varchar(max)")]
         public string Name { get; set; }
-
+        [Required]
         public int Price { get; set; }
 
-        [Column(TypeName = "image")]
-        public byte[] Image { get; set; }
-
         public Restaurant Restaurant { get; set; }
-        
-        public RestaurantCuisine Cuisine { get; set; }
 
-        public ProductVaration Variations { get; set; }
+
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc.Rendering;
-using HazirKhanaWEB.Extras;
+using HazirKhana.Extras;
 
 using Microsoft.AspNetCore.Http;
 using System.IO;
@@ -175,12 +175,12 @@ namespace HazirKhana.Controllers
             return RedirectToAction("AdminRestaurantList");
         }
 
-        public IActionResult AdminProductList()
-        {
-            List<ProductModel> products = ProductHandler.GetProducts().ToProductModelList();
+        //public IActionResult AdminProductList()
+        //{
+        //    List<ProductModel> products = ProductHandler.GetProducts().ToProductModelList();
 
-            ViewData["Products"] = products;
-            return View();
-        }
+        //    ViewData["Products"] = products;
+        //    return View();
+        //}
     }
 }

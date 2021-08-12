@@ -1,0 +1,47 @@
+﻿@model UserModel;
+@{
+    ViewData["Title"] = "AddUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    List<SelectListItem> Roles = (List<SelectListItem>)ViewData["Roles"];
+}
+
+
+<div class="p-3">
+    <div class="container  bg-white" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-bottom: 40px;">
+        <h1 class="p-3">Add User</h1>
+        <p class="mx-2">Please Fill the Required Form</p><hr>
+        <form asp-action="AddUser" asp-controller="Users" enctype="multipart/form-data">
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <label for="name">Name *</label>
+                    <input type="text" asp-for="Name" class="form-control mt-2 w-75 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter Manager Name"><br>
+                    <label for="name">Email *</label>
+                    <input type="email" asp-for="Email" class="form-control mt-2 w-75 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter  Email">
+                </div>
+                <div class="col-md-6">
+                    <label for="name">Contact Mob *</label>
+                    <input type="number" asp-for="PhoneNumber" class="form-control w-75 mt-2 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter  Contact"><br>
+                    <label for="name">Password</label>
+                    <input type="text" asp-for="PasswordHash" class="form-control w-75 mt-2 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter  Contact"><br>
+
+                </div>
+            </div><hr>
+            <div class="row mt-4">
+                <label for="address"> Address *</label><br>
+                <textarea asp-for="Address" cols="10" style="resize: none; background-color: #FCFBFB; width: 70%;" class="form-control mt-2 p-2 mx-2" required placeholder="Enter Address" rows="3"></textarea>
+            </div><hr>
+            <div class="row mt-4">
+                <h1 class="p-3"> Image</h1>
+                <label for="logo">Image</label>
+                <input type="file" asp-for="Image" accept="image/*" name="image" class="form-control mt-2 w-75 p-2" required style="background-color: #FCFBFB;" placeholder=" Upload Logo "><br>
+
+
+            </div>
+            <button type="submit" class="myBtn mt-5" style="width: 210px; margin-bottom: 40px;">Add User </button>
+
+
+        </form>
+    </div>
+</div>
+

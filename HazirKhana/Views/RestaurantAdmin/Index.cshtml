@@ -1,0 +1,465 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_RestaurantAdminLayout.cshtml";
+    RestaurantModel restaurant = (RestaurantModel)ViewData["Restaurant"];
+}
+
+<div class="container">
+    <div class="row">
+        <div class="" style="padding:0px !important;">
+            @if (restaurant.Banner != null)
+            {
+                <img src="data:image/jpg;base64,@restaurant.Banner" style="width: 100%; height:400px;">
+            }
+            @if (restaurant.Logo != null)
+            {
+                <img src="data:image/jpg;base64,@restaurant.Logo" class="restaurantProfileImage">
+            }
+
+        </div>
+    </div>
+
+    <div class="row">
+        <h1 class="mt-5 p-4 bg-white">Restaurants Info</h1><hr style="margin-top: -5px;">
+        <div class="col-md-6">
+
+            <div class="d-flex">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Name: </label> <p class="p-2">@restaurant.Name</p>
+            </div>
+            <div class="d-flex">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Email: </label> <p class="p-2">@restaurant.Email</p>
+            </div>
+            <div class="d-flex">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Address: </label> <p class="p-2">@restaurant.Address </p>
+            </div>
+            <div class="d-flex">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Postal Code: </label> <p class="p-2"> @restaurant.PostalCode</p>
+            </div>
+            <div class="d-flex">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Order Led Time: </label> <p class="p-2">@restaurant.OrderLedTime </p>
+            </div>
+            <div class="d-flex">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Discription: </label> <p class="p-2">@restaurant.Discription</p>
+            </div>
+            <div class="d-flex">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Cusins: </label>
+                @if (restaurant.Cuisines != null)
+                {
+                    @foreach (var Cuisine in restaurant.Cuisines)
+                    {
+                        <p class="p-2">@Cuisine.Name,</p>
+                    }
+                }
+
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex mx-2">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Contact Mob: </label> <p class="p-2">@restaurant.ContactMob </p>
+            </div>
+            <div class="d-flex mx-2">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Contact Tell: </label> <p class="p-2">@restaurant.ConatctTel </p>
+            </div>
+            <div class="d-flex mx-2">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">City: </label> <p class="p-2">@restaurant.City.Name </p>
+            </div>
+            <div class="d-flex mx-2">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Province: </label> <p class="p-2">@restaurant.Provience.Name </p>
+            </div>
+            <div class="d-flex mx-2">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Sales Tex: </label> <p class="p-2">@restaurant.SalesTax </p>
+            </div>
+            <div class="d-flex mx-2">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Reservation: </label> <p class="p-2">@restaurant.Reservation </p>
+            </div>
+
+            <div class="d-flex mx-2">
+                <label for="name" class="p-2" style="color:#852100; font-weight:600;">Percentage Cut Off: </label> <p class="p-2">@restaurant.PercentageCutOff </p>
+            </div>
+        </div>
+
+    </div>
+
+    <partial name="~/views/Partials/_RestaurantAdminAnalytics.cshtml" />
+
+    <!--**************Graph****************-->
+    <div class="row">
+        <div class="container my-5">
+            <div class="bg-white p-5" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                <h1 class="fw-bold">Total Sales</h1>
+                <div class="d-flex mt-4">
+                    <p class="mx-1">Total Sales: $2000</p>
+                    <p class="mx-5">Total Revanue: $1500</p>
+                </div>
+
+                <iframe src="" frameborder="0" height="400">
+
+                    <!--Space for graph-->
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--******************Recent Orders Tables*******************-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="tablediv" style="overflow: auto;">
+                <table class="table1">
+                    <div class="bg-white d-flex p-5" style="width: 150%;">
+                        <img src="~/icons/checklist.png" class="navIconImage" alt="" srcset="">
+                        <h3 class="fw-bold p-2 mt-1">Recent Orders</h3>
+                    </div>
+                    <thead>
+                        <tr>
+                            <th> Id #</th>
+                            <th>Customers</th>
+                            <th>Bills $</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                        <tr>
+                            <td class="p-2">Jill </td>
+                            <td>Smith lorem</td>
+                            <td>200$</td>
+                            <td><button class="statusBtn">Pending</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--*******Trending *****************************-->
+        <div class="col-md-4">
+            <div class="tablediv" style="overflow: auto;">
+                <table class="table1">
+                    <div class="bg-white d-flex p-5" style="width: 150%;">
+                        <img src="~/icons/total revenue.png" class="navIconImage" alt="" srcset="">
+                        <h3 class="fw-bold p-2 mt-1">Trending</h3>
+                    </div>
+                    <thead>
+                        <tr>
+                            <th> Id #</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!--*********************Riders Analytics*********************************************-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="tablediv" style="overflow: auto;">
+                <table class="table1">
+                    <div class="bg-white d-flex  p-3 " style="width: 150%;">
+
+                        <h3 class="fw-bold p-4 mt-1">Prodcut List</h3>
+
+                    </div>
+                    <thead>
+                        <tr>
+                            <th> Id #</th>
+                            <th> Name</th>
+                            <th>Price </th>
+                            <td>Option</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--*************Resturents Analytics************************-->
+        <div class="col-md-6">
+            <div class="tablediv" style="overflow: auto;">
+                <table class="table1">
+                    <div class="bg-white d-flex  p-3 " style="width: 150%;">
+
+                        <h3 class="fw-bold p-4 mt-1">Restaurants Analytics </h3>
+                        <p class="fw-bold p-3 mx-5 mt-3">17-06-2021</p>
+                    </div>
+                    <thead>
+                        <tr>
+                            <th> Id #</th>
+                            <th>Restaurant Name</th>
+                            <th>Total </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>05 </td>
+                            <td>Smith</td>
+                            <td>10</td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<br>
+<br>
+

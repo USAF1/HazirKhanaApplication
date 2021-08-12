@@ -1,4 +1,15 @@
-﻿<!doctype html>
+﻿@using EntityLib.UserManagment;
+@using HazirKhana.Helpers
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> signInManager;
+@inject UserManager<IdentityUser> userManager;
+@{
+    var result = await userManager.GetUserAsync(User);
+
+    RestaurantManagerModel manager = RestauranManagerHandler.GetRestaurantManager(result.Id).ToRestaurantManagerModel();
+}
+
+<!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -43,12 +54,22 @@
                             <a class="mt-3" href="#"><i class="fas fa-bell fa-2x"></i> <span class="badge bg-warning ">5</span></a>
                         </li>
                         <li class="nav-item d-flex">
-                            <div class="loginUserName">
-                                <p class="loginUserNameBackground" aria-describedby="basic-addon1" style="background-color: #BFD7B5; border-radius: 20px; padding:20px 100px 22px 30px; margin-right:70px; width: 250px;">Yousaf, Hello </p>
-                            </div>
-                            <div class="input-group-append" style="margin-top: 2px;">
-                                <img src="~/icons/man.png" class="icon" alt="" srcset="">
-                            </div>
+
+                                <div class="loginUserName">
+                                    <p class="loginUserNameBackground" aria-describedby="basic-addon1" style="background-color: #BFD7B5; border-radius: 20px; padding:20px 100px 22px 30px; margin-right:70px; width: 250px;">Hello, @manager.User.Name</p>
+                                </div>
+                                <div class="input-group-append" style="margin-top: 2px;">
+                                    @if (manager.User.Image != null)
+                                    {
+                                        <img src="data:image/jpg;base64,@manager.User.Image" class="icon" alt="" srcset="">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/icons/man.png" class="icon" alt="" srcset="">
+                                    }
+
+                                </div>
+
                         </li>
                     </ul>
                 </div>
@@ -61,7 +82,7 @@
             <div class="col-md-2">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <button class="btn navBtn"><i class=""><img src="~/icons/home.png" class="navIconImage" alt=""></i> Dashboard</button>
+                        <a asp-action="Index" asp-controller="RestaurantAdmin" class="btn navBtn"><i class=""><img src="~/icons/home.png" class="navIconImage" alt=""></i> Dashboard</a>
                     </li>
 
 
@@ -113,8 +134,8 @@
                             <button class="dropbtn btn navBtn" type="button"><i class=""><img src="~/icons/menu.png" class="navIconImage" alt=""></i>Menu</button>
                             <div class="dropdown-content nustedList">
                                 <a href="#">Product Managment</a>
-                                <a asp-action="Index" asp-controller="RestaurantCuisine">Cuisine Managment</a>
-                                <a href="#">Add On Managment</a>
+                                <a asp-action="Index" asp-controller="RestaurantCuisine" asp-route-id="@manager.Restaurant.Id">Cuisine Managment</a>
+                                <a asp-action="Index" asp-controller="RestaurantAddOn" asp-route-id="@manager.Restaurant.Id">Add On Managment</a>
                             </div>
                         </div>
 

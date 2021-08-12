@@ -19,5 +19,7 @@ namespace HazirKhana.Models
 
         public RestaurantModel Restaurant { get; set; }
 
+        public ProductVariationModel Variations { get; set; }
+
     }
 }

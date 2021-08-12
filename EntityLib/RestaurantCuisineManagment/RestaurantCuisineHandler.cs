@@ -41,5 +41,31 @@ namespace EntityLib.RestaurantCuisineManagment
                 return (from Cuisine in context.RestaurantCuisines where Cuisine.Restaurant.Id == Id select Cuisine).ToList();
             }
         }
+
+        public static RestaurantCuisine GetCuisine(int id)
+        {
+            using (ApplicationDb context =new ApplicationDb())
+            {
+                return context.RestaurantCuisines.FirstOrDefault(x => x.Id == id);
+            }
+        }
+
+
+        public static void UpdateRestaurantCuisine(RestaurantCuisine entity)
+        {
+            using (ApplicationDb context = new ApplicationDb())
+            {
+                if (entity.Restaurant != null)
+                {
+                    context.Entry(entity.Restaurant).State = EntityState.Unchanged;
+                }
+                if (entity.Products != null)
+                {
+                    context.Entry(entity.Products).State = EntityState.Unchanged;
+                }
+
+                context.RestaurantCuisines.Update(entity);
+            }
+        }
     }
 }

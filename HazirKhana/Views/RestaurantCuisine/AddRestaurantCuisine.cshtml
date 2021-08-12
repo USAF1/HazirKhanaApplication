@@ -1,0 +1,37 @@
+﻿@model RestaurantCuisineModel
+@{
+    ViewData["Title"] = "AddRestaurantCuisine";
+    Layout = "~/Views/Shared/_RestaurantAdminLayout.cshtml";
+}
+
+
+<div class="container bg-white m-5">
+    <div class="row">
+        <form asp-action="AddRestaurantCuisine" asp-controller="RestaurantCuisine" enctype="multipart/form-data">
+            <h1 class="mt-4 p-3">Add Cuisine</h1>
+            <p class="mx-3">Please Fill The Required Form </p> <hr>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <label for="name">Name *</label>
+                    <input type="text" asp-for="Name" class="form-control mt-2 w-75 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter Cuisine Name"><br>
+                </div>
+            </div><hr class="bg-dark mt-4">
+            <br><br>
+            <div class="row">
+                <label for="address"> Description *</label><br>
+                <textarea asp-for="Description" cols="10" style="resize: none; background-color: #FCFBFB; width: 90%;" class="form-control mt-2 p-2 mx-2" placeholder="Enter Description" rows="3"></textarea>
+
+                <div class="col-md-6" style="padding-top:40px;">
+                    <label for="image">Image</label>
+                    <input type="file" asp-for="Image" accept="image/*" name="image" class="form-control mt-2 w-75 p-2" style="background-color: #FCFBFB;" placeholder=" Upload Image "><br>
+                </div>
+            </div>
+            <hr class="mt-4">
+            <button type="submit" class="myBtn mt-2">Add Cuisine</button>
+            <br><br>
+
+        </form>
+    </div>
+</div>
+
+

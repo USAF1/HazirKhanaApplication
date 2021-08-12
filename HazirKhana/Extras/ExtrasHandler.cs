@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HazirKhanaWEB.Extras
+namespace HazirKhana.Extras
 {
     public static class ExtrasHandler
     {
@@ -34,6 +35,23 @@ namespace HazirKhanaWEB.Extras
             }
             return null;
 
+        }
+
+
+
+        public static void Set<T>(this ISession session, string key, T obj)
+        {
+            session.SetString(key, JsonConvert.SerializeObject(obj));
+        }
+
+
+        public static T Get<T>(this ISession session, string key)
+        {
+            string data = session.GetString(key);
+
+            if (string.IsNullOrWhiteSpace(data)) return default;
+
+            return JsonConvert.DeserializeObject<T>(data);
         }
 
     }

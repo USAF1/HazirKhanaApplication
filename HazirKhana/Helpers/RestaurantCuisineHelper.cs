@@ -22,6 +22,7 @@ namespace HazirKhana.Helpers
                     model.Image = Convert.ToBase64String(entity.Image);
                 }
                 model.Description = entity.Description;
+                model.Status = entity.Status;
                 model.Restaurant = entity.Restaurant.ToRestaurantModel();
             }
             return model;
@@ -37,6 +38,7 @@ namespace HazirKhana.Helpers
                 entity.Id = model.Id;
                 entity.Name = model.Name;
                 entity.Description = model.Description;
+                entity.Status = model.Status;
                 entity.Restaurant = model.Restaurant.ToRestaurantEntity();
 
             }

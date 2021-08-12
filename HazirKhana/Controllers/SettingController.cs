@@ -1,6 +1,7 @@
 ﻿using EntityLib.LocationManagment;
 using HazirKhana.Helpers;
 using HazirKhana.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -12,7 +13,16 @@ namespace HazirKhana.Controllers
 {
     public class SettingController : Controller
     {
-        public IActionResult Index()
+        private readonly RoleManager<IdentityRole> _rolemanager;
+
+        public SettingController(RoleManager<IdentityRole> rolemanager)
+        {
+            _rolemanager = rolemanager;
+        }
+
+
+
+        public  IActionResult Index()
         {
             List<ProvienceModel> proviences = LocationHandler.GetProviences().ToProvienceModelList();
 
@@ -26,6 +36,7 @@ namespace HazirKhana.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult AddProvience(ProvienceModel model)
         {
             if (model != null)
@@ -37,12 +48,28 @@ namespace HazirKhana.Controllers
         }
 
 
+        [HttpPost]
         public IActionResult AddCity(CityModel model)
         {
             if (model != null)
             {
                 model.Provience = LocationHandler.GetProvience(model.Provience.Id).ToProvienceModel();
                 LocationHandler.AddCity(model.ToCityEntity());
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddRole(IdentityRole model)
+        {
+            if (model != null)
+            {
+                var result = await _rolemanager.CreateAsync(new IdentityRole(model.Name));
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
             }
 
             return RedirectToAction("Index");

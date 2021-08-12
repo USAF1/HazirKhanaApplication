@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "AdminRestaurntManagerList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    List<RestaurantManagerModel> managers = (List<RestaurantManagerModel>)ViewData["Managers"];
+}
+
+<div class="container mt-5 bg-white" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); padding: 0px;">
+    <div class="d-flex justify-content-between " style="background-color: #413C58; padding: 10px 20px !important;">
+        <h1 class=" text-white"> Restaurant Managers List</h1>
+        <a asp-action="AddManager" asp-controller="RestaurantManager" class="btn-lg  addBtn">Add New</a>
+    </div>
+
+    @if (managers != null)
+    {
+
+
+
+
+<table class="table3 mt-2" style="width: 100%;">
+            <thead class="">
+                <tr>
+                    <th> Id #</th>
+                    <th>Name</th>
+                    <th>Restaurant</th>
+                    <th>Contact</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var manager in managers)
+                {
+                    <tr>
+                        <td class="p-2">@manager.Id</td>
+                        <td>@manager.User.Name</td>
+                        <td>@manager.Restaurant.Name</td>
+                        <td>@manager.User.PhoneNumber</td>
+                        <td><i class="fas btn fa-eye fa-2x"></i></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+<div class="d-flex mt-5 mx-5 justify-content-end">
+            <p class="mx-3 btn fw-bold">Previous</p>
+            <p class="mx-3 btn fw-bold">Next</p>
+        </div>
+            }
+            else
+            {
+                <h4>No Manager Found</h4>
+            }
+
+
+</div>
+
+
+
+<br>
+<br>
+

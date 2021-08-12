@@ -26,6 +26,9 @@ namespace EntityLib.RestaurantCuisineManagment
         public byte[] Image { get; set; }
 
         [Required]
+        public string Status { get; set; }
+
+        [Required]
         public Restaurant Restaurant { get; set; }
 
         public virtual List<Product> Products { get; set; }

@@ -1,8 +1,11 @@
-﻿using EntityLib.CuisineManagment;
+﻿using EntityLib.AddOnManagment;
+using EntityLib.CuisineManagment;
 using EntityLib.LocationManagment;
 using EntityLib.ProductsManagment;
 using EntityLib.RestaurantCuisineManagment;
 using EntityLib.RestaurantManagment;
+using EntityLib.UserManagment;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace EntityLib
 {
-    public class ApplicationDb : DbContext
+    public class ApplicationDb : IdentityDbContext
     {
 
         public DbSet<Cuisine> Cuisines { get; set; }
@@ -21,6 +24,8 @@ namespace EntityLib
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<ProductVaration> ProductVarations { get; set; }
+
         public DbSet<City> Cities { get; set; }
 
         public DbSet<Provience> Proviences { get; set; }
@@ -28,6 +33,12 @@ namespace EntityLib
         public DbSet<RestaurantCuisine> RestaurantCuisines { get; set; }
 
         public DbSet<CuisineRestaurant> CuisineRestaurants { get; set; }
+
+        public DbSet<AddOn> AddOns { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<RestaurantManager> RestaurantManagers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,6 +49,7 @@ namespace EntityLib
             modelBuilder.Entity<Provience>()
         .HasIndex(u => u.Name)
         .IsUnique();
+
 
             modelBuilder.Entity<CuisineRestaurant>(entity =>
             {
@@ -62,7 +74,7 @@ namespace EntityLib
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlServer("Data Source=.; user id=sa; password=Charli1122#; Initial Catalog=HazirKhanaDb");
+            optionsBuilder.UseSqlServer("Data Source=.; user id=sa; password=Charli1122#; Initial Catalog=HazirKhana");
         }
 
     }

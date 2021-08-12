@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IdentityRole; 
+<div class="col-md-7">
+
+    <div style="border: 2px solid black;">
+        <h4 class="fw-bold p-3" style="background-color: #FAFAFA;">Add Role</h4>
+        <form class="p-3" asp-action="AddRole" asp-controller="Setting">
+
+            <label for="name">Name *</label>
+            <input type="text" asp-for="Name" class="form-control mt-2 w-75 p-2" required style="background-color: #FAFAFA;" placeholder=" Enter Role Name"><br>
+
+            <br />
+
+            <button type="submit" class="myBtn mt-2">Add Role</button>
+        </form>
+    </div>
+
+</div>

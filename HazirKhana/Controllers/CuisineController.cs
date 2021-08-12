@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using HazirKhanaWEB.Extras;
+using HazirKhana.Extras;
 using System;
 using System.Collections.Generic;
 using System.Linq;
