@@ -13,6 +13,8 @@ namespace HazirKhana.Models
 
         public int  Price { get; set; }
 
+        public string Discription { get; set; }
+
         public RestaurantCuisineModel Cuisine { get; set; }
 
         public string Image { get; set; }
@@ -20,6 +22,8 @@ namespace HazirKhana.Models
         public RestaurantModel Restaurant { get; set; }
 
         public ProductVariationModel Variations { get; set; }
+
+        public List<AddOnModel> AddOns { get; set; }
 
     }
 }

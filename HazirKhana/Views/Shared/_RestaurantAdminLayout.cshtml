@@ -133,7 +133,7 @@
                         <div class="dropdown">
                             <button class="dropbtn btn navBtn" type="button"><i class=""><img src="~/icons/menu.png" class="navIconImage" alt=""></i>Menu</button>
                             <div class="dropdown-content nustedList">
-                                <a href="#">Product Managment</a>
+                                <a asp-action="RestauranAdminProductList" asp-controller="Product" >Product Managment</a>
                                 <a asp-action="Index" asp-controller="RestaurantCuisine" asp-route-id="@manager.Restaurant.Id">Cuisine Managment</a>
                                 <a asp-action="Index" asp-controller="RestaurantAddOn" asp-route-id="@manager.Restaurant.Id">Add On Managment</a>
                             </div>

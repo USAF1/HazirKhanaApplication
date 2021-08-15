@@ -1,0 +1,130 @@
+﻿@model ProductModel;
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Views/Shared/_RestaurantAdminLayout.cshtml";
+
+    List<SelectListItem> cuisines = (List<SelectListItem>)ViewData["Cuisines"];
+    List<AddOnModel> addons = (List <AddOnModel >) ViewData["AddOns"];
+}
+
+<div class="col-md-10 p-5">
+    <h1 class="p-3" style="background-color: #FAFAFA;">Add Product</h1>
+    <form asp-action="AddProduct" asp-controller="Product" enctype="multipart/form-data" class="p-3" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div class="container p-4">
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <label for="name">Product Name *</label>
+                    <input type="text" asp-for="Name" class="form-control mt-2 w-75 p-2" required style="background-color: #FCFBFB;" placeholder=" Enter Product Name"><br>
+
+                </div>
+                <div class="col-md-6">
+                    <label for="name">Select Cusine  *</label>
+                    <select asp-items="cuisines" asp-for="Cuisine.Id" style="background-color: #FCFBFB;" class="form-select w-50 mt-2 p-2">
+                    </select><br>
+
+                </div>
+            </div><hr class="bg-dark mt-4">
+
+            <div class="row mt-4">
+                <label for="name">Product Type *</label>
+                <ul class="nav multipleTables mt-2 " role="tablist">
+                    <li class="nav-item nav-tabs btn">
+                        <a href="#CollapseSimple" class="tab-item" role="tab" data-toggle="tab">
+                            Simple
+                        </a>
+                    </li>
+                    <li class="nav-item nav-tabs btn">
+                        <a href="#collapseProduct" class="tab-item" role="tab" data-toggle="tab">
+                            Variable
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="tab-content">
+                    <div class=" tab-pane" role="tabpanel" id="CollapseSimple">
+                        <label for="name" class="mt-4">Price <small>(If the Product Type is Simple provide Price).</small></label>
+                        <input type="number" asp-for="Price" class="form-control mx-2 mt-2  p-2" style="background-color: #FCFBFB; width: 200px;" placeholder=" Enter Product Price"><br>
+
+
+                    </div>
+
+                    <div class=" tab-pane" role="tabpanel" id="collapseProduct">
+
+                        <label for="name" class="mt-4">Variation Name *</label>
+                        <input type="text" asp-for="Variations.Small" class="form-control mx-2 mt-2  p-2"  style="background-color: #FCFBFB; width: 200px;" placeholder=" Enter Variation Name ">
+                        <label for="name" class="mt-4">Variation Price *</label>
+                        <input type="number" asp-for="Variations.SmallPrice" class="form-control mx-2 mt-2  p-2"  style="background-color: #FCFBFB; width: 200px;" placeholder=" Enter Variation Price">
+
+                        <hr>
+
+                        <label for="name" class="mt-4">Variation Name *</label>
+                        <input type="text" asp-for="Variations.Medium" class="form-control mx-2 mt-2  p-2"  style="background-color: #FCFBFB; width: 200px;" placeholder=" Enter Variation Name ">
+                        <label for="name" class="mt-4">Variation Price *</label>
+                        <input type="number" asp-for="Variations.MediumPrice" class="form-control mx-2 mt-2  p-2"  style="background-color: #FCFBFB; width: 200px;" placeholder=" Enter Variation Price">
+
+                        <hr>
+
+                        <label for="name" class="mt-4">Variation Name *</label>
+                        <input type="text" asp-for="Variations.Large" class="form-control mx-2 mt-2  p-2"  style="background-color: #FCFBFB; width: 200px;" placeholder=" Enter Variation Name ">
+                        <label for="name" class="mt-4">Variation Price *</label>
+                        <input type="number"  asp-for="Variations.LargePrice" class="form-control mx-2 mt-2  p-2"  style="background-color: #FCFBFB; width: 200px;" placeholder=" Enter Variation Price">
+
+                        <hr>
+
+                        <label for="name" class="mt-4">Variation Name *</label>
+                        <input type="text" asp-for="Variations.ExtraLarge" class="form-control mx-2 mt-2  p-2"  style="background-color: #FCFBFB; width: 200px;" placeholder=" Enter Variation Name ">
+                        <label for="name" class="mt-4">Variation Price *</label>
+                        <input type="number" asp-for="Variations.XlPrice" class="form-control mx-2 mt-2  p-2"  style="background-color: #FCFBFB; width: 200px;" placeholder=" Enter Variation Price">
+
+
+                    </div>
+                </div>
+                <br><br>
+
+            </div><hr class="bg-dark mt-4">
+
+
+            <div class="row mt-4">
+                <h1 class="p-3"> Product Discription</h1>
+                <label for="description">Discription</label>
+                <textarea asp-for="Discription" placeholder="Enter Description" class="form-control w-75 p-3 mx-2 mt-2" cols="30" rows="5" style="resize: none; background-color: #FCFBFB;"></textarea>
+
+            </div><hr class="mt-4 bg-dark">
+            <div class="row mt-4">
+                <h1 class="p-3"> Add On's</h1>
+                <label for="Addons">Addon Name</label>
+                <div class="form-check form-check-inline mx-4 mt-2">
+                    @for (int i = 0; i < addons.Count; i++)
+                    {
+                        <div class="form-check form-check-inline mx-3 ">
+                            <input class="form-check-input " id="@addons[i].Id" type="checkbox" asp-for="@addons[i].IsSelected">
+                            <input type="hidden" asp-for="@addons[i].Id" />
+                            <input type="hidden" asp-for="@addons[i].Name" />
+                            <label class="form-check-label">@addons[i].Name</label>
+                        </div>
+                    }
+                </div>
+
+            </div><hr class="mt-4 bg-dark">
+                  <div class="row">
+                      <h1 class="p-3"> Product Image</h1>
+                      <label for="image">Image</label>
+                      <input type="file" asp-for="Image" accept="image/*" name="image" class="form-control w-75 mt-2 p-2" required style="background-color: #FCFBFB;" placeholder="Upload Banner"><br>
+                  </div><hr class="mt-4 bg-dark">
+            <button type="submit" class="singleRestaurantBtn mt-3" style="padding: 12px 80px; float: left;">Add Product</button>
+            <br><br>  <br><br>
+        </div>
+    </form>  <br><br>
+
+
+
+
+
+
+
+
+
+    <!--**************************Closing Div of main Container***************************************-->
+</div>
+
+

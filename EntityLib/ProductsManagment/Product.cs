@@ -1,4 +1,5 @@
 ﻿
+using EntityLib.AddOnManagment;
 using EntityLib.RestaurantCuisineManagment;
 using EntityLib.RestaurantManagment;
 using System;
@@ -21,6 +22,9 @@ namespace EntityLib.ProductsManagment
 
         public int Price { get; set; }
 
+        [Column(TypeName = "varchar(max)")]
+        public string Discription { get; set; }
+
         [Column(TypeName = "image")]
         public byte[] Image { get; set; }
 
@@ -29,5 +33,8 @@ namespace EntityLib.ProductsManagment
         public RestaurantCuisine Cuisine { get; set; }
 
         public ProductVaration Variations { get; set; }
+
+        public virtual List<AddOnProduct> AddOnProducts { get; set; }
+
     }
 }

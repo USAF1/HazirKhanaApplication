@@ -1,5 +1,6 @@
 ﻿using EntityLib.RestaurantCuisineManagment;
 using HazirKhana.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,6 +78,25 @@ namespace HazirKhana.Helpers
 
             return entityList;
 
+        }
+
+
+
+
+        public static List<SelectListItem> ToRestaurantCuisineSelectListitem(this List<RestaurantCuisine> entites)
+        {
+            List<SelectListItem> cuisineList = new List<SelectListItem>();
+
+            if (entites != null)
+            {
+                foreach (var item in entites)
+                {
+                    cuisineList.Add(new SelectListItem { Text = item. Name, Value = Convert.ToString(item.Id)});
+                }
+
+            }
+
+            return cuisineList;
         }
 
     }

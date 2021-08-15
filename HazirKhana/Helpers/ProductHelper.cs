@@ -25,6 +25,12 @@ namespace HazirKhana.Helpers
                 }
                 
                 model.Cuisine = entity.Cuisine.ToRestaurantCuisineModel();
+
+                if (entity.Variations != null)
+                {
+                    model.Variations = entity.Variations.ToVariationModel();
+                }
+                
             }
 
             return model;
@@ -41,6 +47,10 @@ namespace HazirKhana.Helpers
                 entity.Price = model.Price;
                 entity.Restaurant = model.Restaurant.ToRestaurantEntity();
                 entity.Cuisine = model.Cuisine.ToRestaurantCuisineEntity();
+                if (model.Variations != null)
+                {
+                    entity.Variations = model.Variations.ToVariationEntity();
+                }
             }
             return entity;
         }

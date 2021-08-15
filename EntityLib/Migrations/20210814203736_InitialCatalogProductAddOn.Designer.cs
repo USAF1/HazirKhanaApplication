@@ -4,14 +4,16 @@ using EntityLib;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EntityLib.Migrations
 {
     [DbContext(typeof(ApplicationDb))]
-    partial class ApplicationDbModelSnapshot : ModelSnapshot
+    [Migration("20210814203736_InitialCatalogProductAddOn")]
+    partial class InitialCatalogProductAddOn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,10 +35,15 @@ namespace EntityLib.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("RestaurantId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("RestaurantId");
 
@@ -114,21 +121,6 @@ namespace EntityLib.Migrations
                         .IsUnique();
 
                     b.ToTable("Proviences");
-                });
-
-            modelBuilder.Entity("EntityLib.ProductsManagment.AddOnProduct", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AddOnId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId", "AddOnId");
-
-                    b.HasIndex("AddOnId");
-
-                    b.ToTable("AddOnProduct");
                 });
 
             modelBuilder.Entity("EntityLib.ProductsManagment.Product", b =>
@@ -563,6 +555,10 @@ namespace EntityLib.Migrations
 
             modelBuilder.Entity("EntityLib.AddOnManagment.AddOn", b =>
                 {
+                    b.HasOne("EntityLib.ProductsManagment.Product", null)
+                        .WithMany("AddOns")
+                        .HasForeignKey("ProductId");
+
                     b.HasOne("EntityLib.RestaurantManagment.Restaurant", "Restaurant")
                         .WithMany()
                         .HasForeignKey("RestaurantId");
@@ -586,25 +582,6 @@ namespace EntityLib.Migrations
                         .HasForeignKey("ProvienceId");
 
                     b.Navigation("Provience");
-                });
-
-            modelBuilder.Entity("EntityLib.ProductsManagment.AddOnProduct", b =>
-                {
-                    b.HasOne("EntityLib.AddOnManagment.AddOn", "AddOns")
-                        .WithMany("AddOnProducts")
-                        .HasForeignKey("AddOnId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EntityLib.ProductsManagment.Product", "Products")
-                        .WithMany("AddOnProducts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AddOns");
-
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("EntityLib.ProductsManagment.Product", b =>
@@ -739,11 +716,6 @@ namespace EntityLib.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("EntityLib.AddOnManagment.AddOn", b =>
-                {
-                    b.Navigation("AddOnProducts");
-                });
-
             modelBuilder.Entity("EntityLib.CuisineManagment.Cuisine", b =>
                 {
                     b.Navigation("CuisineRestaurants");
@@ -756,7 +728,7 @@ namespace EntityLib.Migrations
 
             modelBuilder.Entity("EntityLib.ProductsManagment.Product", b =>
                 {
-                    b.Navigation("AddOnProducts");
+                    b.Navigation("AddOns");
                 });
 
             modelBuilder.Entity("EntityLib.RestaurantCuisineManagment.RestaurantCuisine", b =>

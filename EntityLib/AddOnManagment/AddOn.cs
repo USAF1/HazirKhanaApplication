@@ -1,4 +1,5 @@
-﻿using EntityLib.RestaurantManagment;
+﻿using EntityLib.ProductsManagment;
+using EntityLib.RestaurantManagment;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,6 +21,6 @@ namespace EntityLib.AddOnManagment
 
         public Restaurant Restaurant { get; set; }
 
-
+        public virtual List<AddOnProduct> AddOnProducts { get; set; }
     }
 }

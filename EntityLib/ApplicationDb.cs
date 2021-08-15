@@ -26,6 +26,8 @@ namespace EntityLib
 
         public DbSet<ProductVaration> ProductVarations { get; set; }
 
+        public DbSet<AddOnProduct> AddOnProducts { get; set; }
+
         public DbSet<City> Cities { get; set; }
 
         public DbSet<Provience> Proviences { get; set; }
@@ -66,6 +68,24 @@ namespace EntityLib
                 entity.HasOne(d => d.Restaurants)
                     .WithMany(p => p.CuisineRestaurants)
                     .HasForeignKey(d => d.RestaurantsId);
+            });
+
+
+            modelBuilder.Entity<AddOnProduct>(entity =>
+            {
+                entity.HasKey(e => new { e.ProductId, e.AddOnId });
+
+                entity.ToTable("AddOnProduct");
+
+                //entity.HasIndex(e => e.RestaurantsId, "IX_CuisineRestaurant_RestaurantsId");
+
+                entity.HasOne(d => d.AddOns)
+                    .WithMany(p => p.AddOnProducts)
+                    .HasForeignKey(d => d.AddOnId);
+
+                entity.HasOne(d => d.Products)
+                    .WithMany(p => p.AddOnProducts)
+                    .HasForeignKey(d => d.ProductId);
             });
         }
 

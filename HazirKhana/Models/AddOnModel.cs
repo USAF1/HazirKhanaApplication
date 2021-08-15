@@ -14,5 +14,7 @@ namespace HazirKhana.Models
         public int Price { get; set; }
 
         public RestaurantModel Restaurant { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }

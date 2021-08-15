@@ -24,7 +24,5 @@ namespace HazirKhana.Models
         public string ExtraLarge { get; set; }
 
         public int XlPrice { get; set; }
-
-        public ProductModel Product { get; set; }
     }
 }
