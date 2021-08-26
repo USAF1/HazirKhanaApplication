@@ -1,0 +1,30 @@
+﻿@model IEnumerable<RestaurantModel>
+
+<div class="row mt-2 mx-2">
+
+    @foreach (var restaurant in Model)
+    {
+        <div class="col-md-4 ">
+            <div class="card restaurantListCard">
+                <img src="data:image/jpg;base64,@restaurant.Banner"  class="card-img-top" style="height: 200px;">
+                <img src="data:image/jpg;base64,@restaurant.Logo"  class="" style="width: 80px; height: 80px; margin-top:-50px; border-radius: 50%; margin-left: 25px;" alt="">
+                <div class="card-body">
+                    <h5 class="card-title ">@restaurant.Name</h5>
+                    <p class="card-text">
+                    @foreach (var item in restaurant.Cuisines)
+                    {
+                        <small>@item.Name</small>
+                    }
+                    
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <p class="card-text fw-bold"><i class="far fa-clock mx-1"></i>@restaurant.OrderLedTime min </p>
+                        <p class="card-text fw-bold text-white" style="background-color: #0cdd5d; padding: 2px 15px; text-align: center ;width: 120px; border-radius: 5px; margin-bottom: 5px;"> Open</p>
+                    </div>
+                    <button class="restaurantDetailBtn mt-2">View Restaurant</button>
+                </div>
+            </div><br>
+
+        </div>
+    }
+</div>

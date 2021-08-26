@@ -1,4 +1,8 @@
-﻿using HazirKhana.Models;
+﻿using EntityLib.CuisineManagment;
+using EntityLib.ProductsManagment;
+using EntityLib.RestaurantManagment;
+using HazirKhana.Helpers;
+using HazirKhana.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,27 +15,21 @@ namespace HazirKhana.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         public IActionResult Index()
         {
-            return View();
-        }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+            List<CuisineModel> cuisines = CuisineHandler.GetCuisines().ToCuisineModelList();
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            List<ProductModel> products = ProductHandler.GetTopNineProducts().ToProductModelList();
+
+            List<RestaurantModel> restaurants = RestaurantHandler.GetRandomNineRestaurant().ToRestaurantModelList();
+
+            ViewData["Products"] = products;
+            ViewData["Restaurants"] = restaurants;
+            ViewData["Cuisines"] = cuisines;
+            return View();
         }
     }
 }

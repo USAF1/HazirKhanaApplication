@@ -1,0 +1,33 @@
+@media only screen and (min-width:370px) and (max-width:750px){
+    .bottom-right{
+        font-size: 12px;
+        bottom: 0px !important;
+        margin-top: 20px !important;
+        
+    }
+    .profileImg_res{
+        width: 100px;
+        height: 100px;
+        margin-left: -20px;
+   
+
+    }
+    .coverImg_res{
+        height: 500px !important;
+        
+    }
+    .aaa_res{
+        margin-left: 10px !important;
+        line-height: 15px;
+        line-break: auto;
+        margin-bottom: 15px !important;
+    }
+    .aaa_res h1{
+        font-size: 14px;
+    }
+    .bbb_res{
+        bottom: 120px !important;
+        margin-right: -80px !important;
+        font-size: 12px;
+    }
+}

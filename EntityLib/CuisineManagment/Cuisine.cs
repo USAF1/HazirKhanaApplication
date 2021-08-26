@@ -27,7 +27,8 @@ namespace EntityLib.CuisineManagment
         [Column(TypeName = "image")]
         public byte[] Image { get; set; }
 
-        public Cuisine ParentCuisine { get; set; }
+        
+        public string State { get; set; }
 
         public virtual List<CuisineRestaurant> CuisineRestaurants { get; set; }
 

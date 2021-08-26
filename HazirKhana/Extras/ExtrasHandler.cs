@@ -54,5 +54,16 @@ namespace HazirKhana.Extras
             return JsonConvert.DeserializeObject<T>(data);
         }
 
+
+
+        public static List<SelectListItem> StateSelectListItem()
+        {
+            List<SelectListItem> options = new List<SelectListItem>();
+
+            options.Add(new SelectListItem { Text = Constants.ActiveStatus });
+            options.Add(new SelectListItem { Text = Constants.DeleteStatus });
+
+            return options;
+        }
     }
 }

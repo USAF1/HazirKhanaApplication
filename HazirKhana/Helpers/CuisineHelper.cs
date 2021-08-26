@@ -27,11 +27,7 @@ namespace HazirKhana.Helpers
                     model.Image = Convert.ToBase64String(entity.Image);
                 }
 
-                if (entity.ParentCuisine != null)
-                {
-                    model.ParentCuisine = new CuisineModel() { Id = entity.ParentCuisine.Id, Name = entity.ParentCuisine.Name, Description = entity.ParentCuisine.Description };
-
-                }
+                model.State = entity.State;
             }
 
             return model;
@@ -48,10 +44,8 @@ namespace HazirKhana.Helpers
                 entity.Name = model.Name;
 
                 entity.Description = model.Description;
-                if (model.ParentCuisine != null)
-                {
-                    entity.ParentCuisine = new Cuisine() { Id = entity.ParentCuisine.Id, Name = entity.ParentCuisine.Name, Description = entity.ParentCuisine.Description };
-                }
+
+                entity.State = model.State;
             }
 
             return entity;

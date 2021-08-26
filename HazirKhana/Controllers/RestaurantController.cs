@@ -16,11 +16,14 @@ using HazirKhana.Helpers;
 using EntityLib.LocationManagment;
 using EntityLib.RestaurantManagment;
 using EntityLib.ProductsManagment;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HazirKhana.Controllers
 {
+    [Authorize]
     public class RestaurantController : Controller
     {
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
@@ -175,12 +178,5 @@ namespace HazirKhana.Controllers
             return RedirectToAction("AdminRestaurantList");
         }
 
-        //public IActionResult AdminProductList()
-        //{
-        //    List<ProductModel> products = ProductHandler.GetProducts().ToProductModelList();
-
-        //    ViewData["Products"] = products;
-        //    return View();
-        //}
     }
 }

@@ -20,6 +20,6 @@ namespace HazirKhana.Models
 
         public virtual List<CuisineRestaurantModel> CuisineRestaurants { get; set; }
 
-        public CuisineModel ParentCuisine { get; set; }
+        public string State { get; set; }
     }
 }

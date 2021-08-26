@@ -1,8 +1,92 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+
+    List<CuisineModel> cuisines = (List<CuisineModel>)ViewData["Cuisines"];
+
+    List<RestaurantModel> restaurants = (List<RestaurantModel>)ViewData["Restaurants"];
+    List<ProductModel> produtcs = (List<ProductModel>)ViewData["Products"];
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid p-5" style="background-color: #f8f8f8;">
+    <h1>Find Aweseome Deals</h1>
+    <h5>List of best Restaurants and Cuisines</h5>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row mt-4">
+                <div class="d-flex justify-content-start">
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control" style="width: 450px;" placeholder="Search Cuisine, Restaurant">
+                    </div>
+                    <button class="mx-5 searchbtn">Search</button>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+
+                        @if (cuisines.Count > 0)
+                        {
+                            @foreach (var cuisine in cuisines)
+                            {
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <a href="#">
+                                                <div class="card" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);">
+                                                    <img src="data:image/jpg;base64,@cuisine.Image" class="card-img-top">
+                                                    <div class="card-body">
+                                                        <p class="card-text text-center fw-bold">@cuisine.Name</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div><br /><br />
+</div>
+<!--***********************Section 2***********************-->
+<div class="container">
+    <h1 class="text-center mt-5 pb-4">Top Restaurants</h1>
+
+    <partial name="~/views/Partials/_RestaurantListPartial.cshtml" model="@restaurants" />
+ 
+    <div class="text-center ">
+        <button class="viewRestaurantBtn fw-bold  mt-4" style="background-color: red;">View More Restaurant</button>
+    </div>
+    <br /><br />
+
+</div>
+<!--********************SECTION 3***************************-->
+<div class="container-fluid p-2" style="background-color: #f8f8f8;">
+    <div class="section-header mt-4 text-center">
+        <h1>Top Product </h1>
+        <span class="line"></span>
+    </div>
+    <div class="container">
+
+    <partial name="~/views/Partials/_ProductsListPartial.cshtml" model="@produtcs" />
+        <div class="text-center mt-4 pb-2">
+            <button class="viewRestaurantBtn fw-bold mt-4" style="background-color: #413c58;">View More Products</button>
+        </div>
+    </div><br />
 </div>

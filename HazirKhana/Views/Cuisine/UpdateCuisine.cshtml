@@ -1,0 +1,34 @@
+﻿@model CuisineModel
+@{
+    ViewData["Title"] = "UpdateCuisine";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    List<SelectListItem> state = (List<SelectListItem>)ViewData["State"];
+}
+
+
+<div class="col-md">
+    <h4 class="fw-bold p-3">Update Cusine </h4>
+    <div class="p-3" style="border: 2px solid black; background-color: #FCFBFB;">
+        <form asp-action="UpdateCuisine" asp-controller="Cuisine" enctype="multipart/form-data">
+            <label for="name">Name *</label>
+            <input asp-for="Name" type="text" class="form-control mt-2 w-75 p-2" required placeholder=" Enter Restaurant Name"><br>
+            <label for="description"> Description *</label><br>
+            <textarea asp-for="Description" cols="10" style="resize: none; width: 90%;" class="form-control mt-2 p-2 " required placeholder="Description" rows="5"></textarea>
+            <br />
+
+            <label for="name">Select State  *</label>
+            <select asp-items="state" asp-for="State" style="background-color: #FCFBFB;" class="form-select w-50 mt-2 p-2" id="">
+            </select><br>
+
+            <label for="name">Upload Image *</label>
+            <input type="file" asp-for="Image" accept="image/*" name="image" class="form-control mt-2 w-75 p-2" style="background-color: #FCFBFB;" placeholder=" Upload Image "><br>
+            <button type="submit" class="myBtn mt-2">Add Cusine</button>
+        </form>
+
+    </div>
+
+</div>
+
+<br /><br />
+

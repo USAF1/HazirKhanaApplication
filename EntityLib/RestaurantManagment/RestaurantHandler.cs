@@ -106,6 +106,14 @@ namespace EntityLib.RestaurantManagment
             }
         }
 
+        public static List<Restaurant> GetRandomNineRestaurant()
+        {
+            using (ApplicationDb context = new ApplicationDb())
+            {
+                return context.Restaurants.FromSqlRaw("SELECT top 9 * from dbo.Restaurants").Include(x=>x.CuisineRestaurants).ThenInclude(y=>y.Cuisines).ToList();
+            }
+        }
+
         public static void DeleteCuisineRestaurant(int id)
         {
             List<CuisineRestaurant> avaliableList = new List<CuisineRestaurant>();

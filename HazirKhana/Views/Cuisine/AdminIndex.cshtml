@@ -7,7 +7,8 @@
 
 <partial name="~/views/Partials/_RestaurantAdminAnalytics.cshtml" />
 
-<br /><br />
+<br />
+<br />
 
 <div class="container bg-white" style="padding: 0px 12px !important;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
     <div class="row">
@@ -25,7 +26,7 @@
                                     <th>Option</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style="margin-top: 10px">
                                 @if (cuisines != null)
                                 {
 
@@ -34,7 +35,7 @@
                                         <tr>
                                             <td class="p-2">@cuisine.Id </td>
                                             <td>@cuisine.Name</td>
-                                            <td><i class="fas btn fa-eye fa-2x"></i></td>
+                                            <td><a asp-action="UpdateCuisine" asp-controller="Cuisine" asp-route-id="@cuisine.Id"><i class="fas btn fa-eye fa-2x"></i></a></td>
                                         </tr>
                                     }
                                 }
@@ -59,5 +60,3 @@
 <br />
 <br />
 <br />
-
-

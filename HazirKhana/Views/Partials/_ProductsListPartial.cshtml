@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ProductModel>
+
+<div class="row mt-5">
+
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4">
+            <div class="card restaurantListCard">
+                <img src="data:image/jpg;base64,@product.Image" class="card-img-top" alt="...">
+                <div class="card-body" style="line-height: 1; line-height: 1;">
+                    <p class="card-title fw-bold">@product.Name</p>
+                    <p class="card-text">Restaurant: @product.Restaurant.Name</p>
+                    <p class="card-text">Cuisine: @product.Cuisine.Name</p>
+                    @if (product.Price > 0)
+                    {
+                        <p class="card-title fw-bold">RS: @product.Price</p>
+                }
+                else if(product.Variations != null)
+                {
+                <p class="card-title fw-bold">@product.Variations.Small : @product.Variations.SmallPrice </p>
+                }
+
+                    <button class="viewRestaurantBtn mt-3" style="border-radius: 10px;">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -33,6 +33,15 @@ namespace EntityLib.ProductsManagment
             }
         }
 
+
+        public static List<Product> GetTopNineProducts()
+        {
+            using (ApplicationDb context = new ApplicationDb())
+            {
+                return context.Products.FromSqlRaw("SELECT top 9 * from dbo.Products").Include(x => x.Cuisine).Include(y=>y.Restaurant).Include(z=>z.Variations).ToList();
+            }
+        }
+
         public static void AddProduct(Product entity)
         {
             using (ApplicationDb context = new ApplicationDb())
