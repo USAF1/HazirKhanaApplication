@@ -54,7 +54,7 @@ namespace EntityLib.RestaurantManagment
         {
             using (ApplicationDb context = new ApplicationDb())
             {
-                return context.Restaurants.ToList();
+                return context.Restaurants.Include(z => z.CuisineRestaurants).ThenInclude(t => t.Cuisines).Include(x=>x.Provience).Include(o=>o.City).ToList();
             }
         }
 

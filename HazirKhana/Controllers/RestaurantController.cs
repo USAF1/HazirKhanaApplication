@@ -24,9 +24,17 @@ namespace HazirKhana.Controllers
     public class RestaurantController : Controller
     {
         [AllowAnonymous]
-        public IActionResult Index()
+        public IActionResult Index(int? pageNumber)
         {
-            return View();
+            int pageSize = 1;
+            List<RestaurantModel> restaurants = RestaurantHandler.GetRestaurants().ToRestaurantModelList();
+
+
+            List<CuisineModel> cuisines = CuisineHandler.GetCuisines().ToCuisineModelList();
+
+
+            ViewData["Cuisines"] = cuisines;
+            return View(PaginatedList<RestaurantModel>.CreateAsync(restaurants, pageNumber ?? 1, pageSize));
         }
 
         [HttpGet]

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HazirKhana.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System;
@@ -65,5 +66,7 @@ namespace HazirKhana.Extras
 
             return options;
         }
+
+
     }
 }
