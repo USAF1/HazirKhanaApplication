@@ -26,9 +26,9 @@ namespace HazirKhana.Helpers
                 {
                     model.Image = Convert.ToBase64String(entity.Image);
                 }
-
                 model.State = entity.State;
             }
+
 
             return model;
         }

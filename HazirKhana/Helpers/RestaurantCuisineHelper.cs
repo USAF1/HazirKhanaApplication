@@ -24,7 +24,6 @@ namespace HazirKhana.Helpers
                 }
                 model.Description = entity.Description;
                 model.Status = entity.Status;
-                model.Restaurant = entity.Restaurant.ToRestaurantModel();
             }
             return model;
 

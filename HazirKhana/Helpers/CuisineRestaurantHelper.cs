@@ -54,9 +54,13 @@ namespace HazirKhana.Helpers
         {
             List<CuisineRestaurantModel> modelList = new List<CuisineRestaurantModel>();
 
-            foreach (var item in entites)
+            if (entites.Count > 0 && entites != null)
             {
-                modelList.Add(item.ToModel());
+                foreach (var item in entites)
+                {
+                    modelList.Add(item.ToModel());
+                }
+
             }
 
             return modelList;

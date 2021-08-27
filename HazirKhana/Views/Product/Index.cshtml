@@ -1,0 +1,66 @@
+﻿@model HazirKhana.Extras.PaginatedList<ProductModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+
+    List<CuisineModel> cuisines = (List<CuisineModel>)ViewData["Cuisines"];
+}
+
+<partial name="~/views/Partials/_ClientHeaderPartial.cshtml" model="@cuisines" />
+<div class="container-fluid p-2">
+    <div class="section-header mt-4 text-center">
+        <h1>Top Product </h1>
+        <span class="line"></span>
+    </div>
+    <div class="container">
+        <div class="row mt-2">
+
+            @foreach (var product in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card restaurantListCard">
+                        <img src="data:image/jpg;base64,@product.Image" class="card-img-top" alt="...">
+                        <div class="card-body" style="line-height: 1; line-height: 1;">
+                            <p class="card-title fw-bold">@product.Name</p>
+                            <p class="card-text">Restaurant: @product.Restaurant.Name</p>
+                            <p class="card-text">Cuisine: @product.Cuisine.Name</p>
+                            @if (product.Variations != null)
+                            {
+                                <p class="card-title fw-bold">@product.Variations.Small : @product.Variations.SmallPrice</p>
+                            }
+                            else if (product.Variations == null)
+                            {
+                                <p class="card-title fw-bold">RS: @product.Price</p>
+                            }
+                            <button class="viewRestaurantBtn mt-3" style="border-radius: 10px;">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+        <div class="d-flex mt-5 mx-1  justify-content-end">
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@(Model.PageIndex - 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn mx-3  fw-bold @prevDisabled">
+                Previous
+            </a>
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@(Model.PageIndex + 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn mx-3  fw-bold @nextDisabled">
+                Next
+            </a>
+
+        </div>
+    </div><br />
+</div>

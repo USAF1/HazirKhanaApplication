@@ -13,7 +13,7 @@ namespace EntityLib.ProductsManagment
         {
             using (ApplicationDb context = new ApplicationDb())
             {
-                return context.Products.Include(x => x.Restaurant).Include(y => y.Cuisine).ToList();
+                return context.Products.Include(x => x.Restaurant).Include(y => y.Cuisine).Include(z=>z.Variations).Include(c=>c.AddOnProducts).ToList();
             }
         }
 

@@ -17,6 +17,7 @@ namespace HazirKhana.Models
 
         public bool IsChecked { get; set; }
 
+        public int RestauratCount { get; set; }
 
         public virtual List<CuisineRestaurantModel> CuisineRestaurants { get; set; }
 

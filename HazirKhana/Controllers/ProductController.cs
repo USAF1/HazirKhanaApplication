@@ -1,4 +1,5 @@
 ﻿using EntityLib.AddOnManagment;
+using EntityLib.CuisineManagment;
 using EntityLib.ProductsManagment;
 using EntityLib.RestaurantCuisineManagment;
 using EntityLib.RestaurantManagment;
@@ -17,9 +18,16 @@ namespace HazirKhana.Controllers
 {
     public class ProductController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int? pageNumber)
         {
-            return View();
+            int pageSize = 9;
+
+            List<ProductModel> products = ProductHandler.GetProducts().ToProductModelList();
+
+            List<CuisineModel> cuisines = CuisineHandler.GetCuisines().ToCuisineModelList();
+
+            ViewData["Cuisines"] = cuisines;
+            return View(PaginatedList<ProductModel>.CreateAsync(products, pageNumber ?? 1, pageSize));
         }
 
         public IActionResult RestauranAdminProductList()
@@ -28,6 +36,7 @@ namespace HazirKhana.Controllers
             List<ProductModel> products = ProductHandler.GetRestaurntProducts(manager.Restaurant.Id).ToProductModelList();
 
             ViewData["Products"] = products;
+
 
             return View();
         }

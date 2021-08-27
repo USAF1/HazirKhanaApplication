@@ -17,25 +17,26 @@
             <div class="row mt-5">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                @foreach (var cuisine in Model)
+                                {
 
-                            @foreach (var cuisine in Model)
-                            {
-                                <div class="carousel-item active">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <a href="#">
-                                                <div class="card" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);">
-                                                    <img src="data:image/jpg;base64,@cuisine.Image" class="card-img-top">
-                                                    <div class="card-body">
-                                                        <p class="card-text text-center fw-bold">@cuisine.Name</p>
-                                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="#">
+                                            <div class="card" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);">
+                                                <img src="data:image/jpg;base64,@cuisine.Image" class="card-img-top">
+                                                <div class="card-body">
+                                                    <p class="card-text text-center fw-bold">@cuisine.Name</p>
                                                 </div>
-                                            </a>
-                                        </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </div>
-                            }
 
+
+                                }
+                            </div>
+                            </div>
 
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

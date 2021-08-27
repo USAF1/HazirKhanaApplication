@@ -59,6 +59,10 @@ namespace HazirKhana.Helpers
                 {
                     model.Cuisines = cuisines;
                 }
+                if (entity.RestaurantCuisines != null)
+                {
+                    model.RestaurantCuisines = entity.RestaurantCuisines.ToRestaurantCuisineModelList();
+                }
 
                 //if (entity.RestaurantCuisines != null)
                 //{

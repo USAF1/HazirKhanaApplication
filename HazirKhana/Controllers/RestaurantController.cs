@@ -17,6 +17,7 @@ using EntityLib.LocationManagment;
 using EntityLib.RestaurantManagment;
 using EntityLib.ProductsManagment;
 using Microsoft.AspNetCore.Authorization;
+using EntityLib.RestaurantCuisineManagment;
 
 namespace HazirKhana.Controllers
 {
@@ -26,7 +27,7 @@ namespace HazirKhana.Controllers
         [AllowAnonymous]
         public IActionResult Index(int? pageNumber)
         {
-            int pageSize = 1;
+            int pageSize = 9;
             List<RestaurantModel> restaurants = RestaurantHandler.GetRestaurants().ToRestaurantModelList();
 
 
@@ -35,6 +36,27 @@ namespace HazirKhana.Controllers
 
             ViewData["Cuisines"] = cuisines;
             return View(PaginatedList<RestaurantModel>.CreateAsync(restaurants, pageNumber ?? 1, pageSize));
+        }
+
+        [AllowAnonymous]
+        public IActionResult SingleRestaurant(int id)
+        {
+            Restaurant restaurant = RestaurantHandler.GetRestaurant(id);
+
+            RestaurantModel rest = restaurant.ToRestaurantModel();
+
+
+            foreach (var item in restaurant.RestaurantCuisines)
+            {
+                if (item.Products != null)
+                {
+                    RestaurantCuisineModel find = rest.RestaurantCuisines.Find(x => x.Id == item.Id);
+
+                    find.Products = item.Products.ToProductModelList();
+                }
+            }
+
+            return View();
         }
 
         [HttpGet]

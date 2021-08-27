@@ -10,7 +10,7 @@
     <!--Animated CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- Bootstrap CSS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!--*******************Fonts Awesome********************-->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -39,10 +39,10 @@
                             <a class="nav-link" asp-action="Index" asp-controller="Restaurant">Restaurant</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Cuisine</a>
+                            <a class="nav-link" asp-action="Index" asp-controller="Cuisine">Cuisine</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Product</a>
+                            <a class="nav-link" asp-action="Index" asp-controller="Product">Product</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav mb-2 mb-lg-0">
@@ -68,14 +68,14 @@
     @RenderBody()
 
 
-<footer class="text-center p-3 fw-bold">
-    CopyRight Recevied &#169 2021 - HazirKhana
+    <footer class="text-center p-3 fw-bold">
+        CopyRight Recevied &#169 2021 - HazirKhana
 
-</footer>
-
-
+    </footer>
 
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->

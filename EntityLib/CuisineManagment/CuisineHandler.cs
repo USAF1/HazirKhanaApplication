@@ -29,6 +29,15 @@ namespace EntityLib.CuisineManagment
             }
         }
 
+
+        public static List<Cuisine> GetActiveCuisines()
+        {
+            using (ApplicationDb context = new ApplicationDb())
+            {
+                return context.Cuisines.Where(x => x.State == "Active").Include(y => y.CuisineRestaurants).ThenInclude(v=>v.Restaurants).ToList();
+            }
+        }
+
         public static Cuisine GetCuisine(int id)
         {
             using (ApplicationDb context = new ApplicationDb())

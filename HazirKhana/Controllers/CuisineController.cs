@@ -10,11 +10,33 @@ using HazirKhana.Models;
 using EntityLib.CuisineManagment;
 using HazirKhana.Helpers;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HazirKhana.Controllers
 {
+    [Authorize]
     public class CuisineController : Controller
     {
+        [AllowAnonymous]
+        public IActionResult Index(int? pageNumber)
+        {
+            int pageSize = 9;
+
+            List<Cuisine> cuisninesGet = CuisineHandler.GetActiveCuisines();
+            List<CuisineModel> cuisines = cuisninesGet.ToCuisineModelList();
+
+            foreach (var item in cuisninesGet)
+            {
+                if (item.CuisineRestaurants != null)
+                {
+                    CuisineModel find =  cuisines.Find(x => x.Id == item.Id);
+                    find.RestauratCount = item.CuisineRestaurants.Count;
+                }
+            }
+
+            ViewData["Cuisines"] = cuisines;
+            return View(PaginatedList<CuisineModel>.CreateAsync(cuisines, pageNumber ?? 1, pageSize));
+        }
 
         public IActionResult AdminIndex()
         {

@@ -20,11 +20,12 @@ namespace HazirKhana.Controllers
         public IActionResult Index()
         {
 
-            List<CuisineModel> cuisines = CuisineHandler.GetCuisines().ToCuisineModelList();
+
 
             List<ProductModel> products = ProductHandler.GetTopNineProducts().ToProductModelList();
 
             List<RestaurantModel> restaurants = RestaurantHandler.GetRandomNineRestaurant().ToRestaurantModelList();
+            List<CuisineModel> cuisines = CuisineHandler.GetCuisines().ToCuisineModelList();
 
             ViewData["Products"] = products;
             ViewData["Restaurants"] = restaurants;
