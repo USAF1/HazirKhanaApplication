@@ -15,7 +15,7 @@
     <h1 class="text-center mt-5 pb-4">Top Restaurants</h1>
 
     <partial name="~/views/Partials/_RestaurantListPartial.cshtml" model="@restaurants" />
- 
+
     <div class="text-center ">
         <button class="viewRestaurantBtn fw-bold  mt-4" style="background-color: red;">View More Restaurant</button>
     </div>
@@ -30,9 +30,41 @@
     </div>
     <div class="container">
 
-    <partial name="~/views/Partials/_ProductsListPartial.cshtml" model="@produtcs" />
+        <partial name="~/views/Partials/_ProductsListPartial.cshtml" model="@produtcs" />
         <div class="text-center mt-4 pb-2">
             <button class="viewRestaurantBtn fw-bold mt-4" style="background-color: #413c58;">View More Products</button>
         </div>
     </div><br />
 </div>
+
+
+<div class="modal fade" id="ProductsModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="mydialog-body" class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+@section jsCdn{
+    <script>
+        $(".showmodelArea").click(function (event) {
+            event.preventDefault();
+            var url = $(this).attr("href");
+            $.ajax(
+                {
+                    url: url,
+                }
+            ).done(function (contactform) {
+
+                $("#mydialog-body").html(contactform);
+                $("#ProductsModal").modal();
+            }).fail(function (status) {
+                alert(status.status);
+            });
+        })
+
+
+    </script>
+}

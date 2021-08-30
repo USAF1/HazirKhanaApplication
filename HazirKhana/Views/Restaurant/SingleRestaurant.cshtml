@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewData["Title"] = "SingleRestaurant";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+
+    RestaurantModel restaurant = (RestaurantModel)ViewData["Restaurant"];
+}
+
+
+
+
+<div id="modelSection"></div>
+
+<!--********************SECTION 1***************************-->
+<div class="container-fluid" style="background-color: #f8f8f8;">
+    <div class="container-fluid" style="position: relative;">
+        <img src="data:image/jpg;base64,@restaurant.Banner" height="550" class="coverImg_res" style="width:100%;">
+        <div class="bottom-right d-flex mx-5 " style=" position: absolute; bottom: 50px;">
+            <img src="data:image/jpg;base64,@restaurant.Logo" width="200" class="profileImg_res" height="200" alt="" srcset="">
+            <div class="mx-5 aaa_res">
+                <div>
+                    <h1 class="fw-bold text-white">@restaurant.Name</h1>
+                    <div class="d-flex text-white">
+                        <img src="~/icons/map.png" width="30" height="22">
+                        <p class="mx-2">@restaurant.Address</p>
+                    </div>
+                    <div class="d-flex text-white">
+                        <img src="~/icons/phonecall.png" width="30" height="22">
+                        <p class="mx-2">@restaurant.ContactMob</p>
+                    </div>
+                    @foreach (var item in restaurant.Cuisines)
+                    {
+                        <div class="d-flex text-white">
+                            <img src="~/icons/cuisine.png" width="30" height="22">
+                            <p class="mx-2">@item.Name ,</p>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+        </div>
+        <div class="bbb_res" style=" position: absolute; bottom:150px; right: 100px;">
+            <p class="fw-bold text-white text-white  p-2 " style="background-color: #3ecf8e;"><i class="far fa-clock mx-1"></i>@restaurant.OrderLedTime min </p>
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid" style="background-color: #f2f2f2;">
+    <div class="row">
+        <ul class="nav multiplePills bg-white d-flex" role="tablist">
+
+            <li class="nav-item nav-tabs btn mx-5">
+                <a href="#pill-Menu" class="tab-item" role="tab" data-toggle="tab">
+                    Menu
+                </a>
+            </li>
+            <li class="nav-item nav-tabs btn">
+                <a href="#pill-Reservation" class="tab-item" role="tab" data-toggle="tab">
+                    Reservation
+                </a>
+            </li>
+            <li class="nav-item  btn ms-auto mx-5 float-right">
+                <button class="text-white btn" style="background-color: #0cdd5b; padding: 8px 30px;" role="tab" data-toggle="tab">
+                    Open
+                </button>
+            </li>
+
+        </ul>
+        <div class="tab-content mt-5 mb-5 container">
+            <!--******************CollapseOrders*******************************-->
+            <div class="active tab-pane" role="tabpanel" id="pill-Menu">
+
+                <partial name="~/views/Partials/_SingleRestaurantProductListPartial.cshtml" model="restaurant.RestaurantCuisines" />
+
+            </div>
+            <!--****************CollapseReservation******************************************-->
+            <div class="tab-pane" role="tabpanel" id="pill-Reservation">
+
+                @if (restaurant.Reservation == "Yes")
+                {
+
+                    <partial name="~/views/Partials/_SingleRestaurantProductListPartial.cshtml" />
+                    <partial name="~/views/Partials/_SingleRestaurantProductListPartial.cshtml" model="restaurant.RestaurantCuisines" />
+                }
+                else
+                {
+                    <h4>Sorry @restaurant.Name does not Provide Reservation</h4>
+                }
+
+            </div>
+            <!--************************CollapseReivew******************-->
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ProductsModal" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="mydialog-body" class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section jsCdn{
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script>
+        $(".showmodelArea").click(function (event) {
+            event.preventDefault();
+            var url = $(this).attr("href");
+            $.ajax(
+                {
+                    url: url,
+                }
+            ).done(function (contactform) {
+
+                $("#mydialog-body").html(contactform);
+                $("#ProductsModal").modal();
+            }).fail(function (status) {
+                alert(status.status);
+            });
+        })
+
+
+    </script>
+
+}
+
+

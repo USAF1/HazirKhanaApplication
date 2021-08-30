@@ -18,7 +18,7 @@ namespace HazirKhana.Helpers
                 model.Id = entity.Id;
                 model.Name = entity.Name;
                 model.Price = entity.Price;
-                model.Restaurant = entity.Restaurant.ToRestaurantModel();
+
             }
 
             return model;
@@ -33,7 +33,7 @@ namespace HazirKhana.Helpers
                 entity.Id = model.Id;
                 entity.Name = model.Name;
                 entity.Price = model.Price;
-                entity.Restaurant = model.Restaurant.ToRestaurantEntity();
+
             }
 
             return entity;

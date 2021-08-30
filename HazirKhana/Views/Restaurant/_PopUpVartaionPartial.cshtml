@@ -1,0 +1,120 @@
+﻿@model CartItemModel
+
+
+<form asp-controller="Order" asp-action="PlaceOrder" enctype="multipart/form-data">
+
+    <input asp-for="@Model.Product.Id" hidden />
+
+
+    <h5 class="modal-title fw-bold" id="exampleModalLabel">@Model.Product.Name : Rs <span class="text-danger">@Model.Product.Price</span></h5>
+    <h5 class="modal-title">Quantity: <span class="text-danger"> <input asp-for="@Model.Quantity" type="number" class="form-control" value="1" id="quantity"></span> </h5>
+    <div class="d-flex flex-column  justify-content-end">
+        <button id="pluse" type="button"><i class="fas fa-plus-circle btn"></i></button>
+        <button id="minus" type="button"><i class="fas fa-minus-circle  btn"></i></button>
+
+    </div>
+    <hr>
+    <h5 class="fw-bold">Varitaion</h5>
+    <div class="d-flex justify-content-start">
+        @if (Model.Product.Variations.Small != null)
+        {
+
+        <div class="form-check">
+            <input class="form-check-input " type="checkbox" asp-for="@Model.Product.Variations.IsSelectedSmall">
+
+            <input type="hidden" asp-for="@Model.Product.Variations.Small" />
+            <input type="hidden" asp-for="@Model.Product.Variations.SmallPrice" />
+            <label class="form-check-label">@Model.Product.Variations.Small : @Model.Product.Variations.SmallPrice</label>
+        </div>
+        }
+
+        @if (Model.Product.Variations.Medium != null)
+        {
+
+            <div class="form-check">
+                <input class="form-check-input " type="checkbox" asp-for="@Model.Product.Variations.IsSelectedMedium">
+
+                <input type="hidden" asp-for="@Model.Product.Variations.Medium" />
+                <input type="hidden" asp-for="@Model.Product.Variations.MediumPrice" />
+                <label class="form-check-label">@Model.Product.Variations.Medium : @Model.Product.Variations.MediumPrice</label>
+            </div>
+        }
+
+        @if (Model.Product.Variations.Large != null)
+        {
+
+    <div class="form-check">
+        <input class="form-check-input " type="checkbox" asp-for="@Model.Product.Variations.IsSelectedLarge">
+
+        <input type="hidden" asp-for="@Model.Product.Variations.Large" />
+        <input type="hidden" asp-for="@Model.Product.Variations.LargePrice" />
+        <label class="form-check-label">@Model.Product.Variations.Large : @Model.Product.Variations.LargePrice</label>
+    </div>
+        }
+
+        @if (Model.Product.Variations.ExtraLarge != null)
+        {
+
+    <div class="form-check">
+        <input class="form-check-input " type="checkbox" asp-for="@Model.Product.Variations.IsSelectedExtraLarge">
+
+        <input type="hidden" asp-for="@Model.Product.Variations.ExtraLarge" />
+        <input type="hidden" asp-for="@Model.Product.Variations.XlPrice" />
+        <label class="form-check-label">@Model.Product.Variations.ExtraLarge : @Model.Product.Variations.XlPrice</label>
+    </div>
+        }
+
+    </div>
+
+
+
+
+
+
+    <h5 class="fw-bold">Adds On's<sub style="font-weight: 500; font-size: 12px;"> (for each add on it price would be added)</sub></h5>
+    <div class="d-flex justify-content-start">
+        @if (Model.Product.AddOns != null)
+        {
+            for (int i = 0; i < Model.Product.AddOns.Count; i++)
+            {
+        <div class="form-check">
+            <input class="form-check-input " id="@Model.Product.AddOns[i].Id" type="checkbox" asp-for="@Model.Product.AddOns[i].IsSelected">
+            <input type="hidden" asp-for="@Model.Product.AddOns[i].Id" />
+            <input type="hidden" asp-for="@Model.Product.AddOns[i].Name" />
+            <input type="hidden" asp-for="@Model.Product.AddOns[i].Price" />
+            <label class="form-check-label">@Model.Product.AddOns[i].Name : @Model.Product.AddOns[i].Price</label>
+        </div>
+            }
+
+
+        }
+        else
+        {
+            <h5>NO Addons Found</h5>
+        }
+    </div>
+
+
+    <button type="submit" class="restaurantDetailBtn mt-4" style="width: 170px;">Add to Cart</button>
+</form>
+
+
+<script>
+
+    var count = 1;
+
+    $("#pluse").click(function () {
+        count = count + 1
+        $("#quantity").val(count);
+    })
+
+
+    $("#minus").click(function () {
+        if (count > 1) {
+            count = count - 1
+        } else {
+            count = 1
+        }
+        $("#quantity").val(count);
+    })
+</script>

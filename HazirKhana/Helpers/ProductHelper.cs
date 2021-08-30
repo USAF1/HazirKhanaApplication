@@ -11,6 +11,7 @@ namespace HazirKhana.Helpers
     {
         public static ProductModel ToProductModel(this Product entity)
         {
+            List<AddOnModel> addons = new List<AddOnModel>();
             ProductModel model = new ProductModel();
 
             if (entity != null)
@@ -29,6 +30,15 @@ namespace HazirKhana.Helpers
                 if (entity.Variations != null)
                 {
                     model.Variations = entity.Variations.ToVariationModel();
+                }
+                if (entity.AddOnProducts != null)
+                {
+                    foreach (var item in entity.AddOnProducts) 
+                    {
+                        addons.Add(item.AddOns.ToModel());
+                    }
+
+                    model.AddOns = addons;
                 }
                 
             }

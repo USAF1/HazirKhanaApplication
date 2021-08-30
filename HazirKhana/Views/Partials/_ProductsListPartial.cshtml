@@ -14,13 +14,15 @@
                     @if (product.Price > 0)
                     {
                         <p class="card-title fw-bold">RS: @product.Price</p>
-                }
-                else if(product.Variations != null)
-                {
-                <p class="card-title fw-bold">@product.Variations.Small : @product.Variations.SmallPrice </p>
-                }
+                    }
+                    else if (product.Variations != null)
+                    {
+                        <p class="card-title fw-bold">@product.Variations.Small : @product.Variations.SmallPrice </p>
+                    }
 
-                    <button class="viewRestaurantBtn mt-3" style="border-radius: 10px;">Add to Cart</button>
+                    <a asp-action="PopUp" asp-controller="Restaurant" asp-route-id="@product.Id" class="showmodelArea viewRestaurantBtn mt-3" style="text-decoration: none; color: black;">Add To Cart  <i class="bi bi-cart" style="color:antiquewhite"></i></a>
+
+
                 </div>
             </div>
         </div>

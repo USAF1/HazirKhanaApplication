@@ -21,7 +21,15 @@ namespace EntityLib.ProductsManagment
         {
             using (ApplicationDb context = new ApplicationDb())
             {
-                return (from Product in context.Products where Product.Id == Id select Product).FirstOrDefault();
+                return (from Product in context.Products where Product.Id == Id select Product).Include(x=>x.AddOnProducts).Include(z=>z.Variations).FirstOrDefault();
+            }
+        }
+
+        public static Product GetPopUpProduct(int Id)
+        {
+            using (ApplicationDb context = new ApplicationDb())
+            {
+                return (from Product in context.Products where Product.Id == Id select Product).Include(x => x.AddOnProducts).ThenInclude(e=>e.AddOns).Include(z => z.Variations).Include(y=>y.Cuisine).Include(a=>a.Restaurant).FirstOrDefault();
             }
         }
 

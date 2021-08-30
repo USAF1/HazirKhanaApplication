@@ -41,7 +41,8 @@ namespace HazirKhana.Controllers
         [AllowAnonymous]
         public IActionResult SingleRestaurant(int id)
         {
-            Restaurant restaurant = RestaurantHandler.GetRestaurant(id);
+            Restaurant restaurant = RestaurantHandler.GetClientRestaurant(id);
+
 
             RestaurantModel rest = restaurant.ToRestaurantModel();
 
@@ -56,7 +57,14 @@ namespace HazirKhana.Controllers
                 }
             }
 
-            return View();
+            ViewData["Restaurant"] = rest;
+
+            if (rest.City!= null && rest.Cuisines != null && rest.RestaurantCuisines != null && rest.Provience!= null)
+            {
+                return View();
+            }
+
+            return BadRequest();
         }
 
         [HttpGet]
@@ -206,6 +214,28 @@ namespace HazirKhana.Controllers
             RestaurantHandler.RestaurantAdminUpdate(restaurant);
 
             return RedirectToAction("AdminRestaurantList");
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult PopUp(int id)
+        {
+            ProductModel product = ProductHandler.GetPopUpProduct(id).ToProductModel();
+
+            CartItemModel model = new CartItemModel();
+
+            model.Product = product;
+            model.Quantity = 1;
+
+
+
+            if (product.Variations != null)
+            {
+                return PartialView("~/Views/Restaurant/_PopUpVartaionPartial.cshtml", model);
+            }
+            return PartialView("~/Views/Restaurant/_PopUpPartial.cshtml", model);
+
+
         }
 
     }

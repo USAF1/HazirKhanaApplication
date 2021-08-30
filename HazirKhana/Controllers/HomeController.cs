@@ -19,9 +19,6 @@ namespace HazirKhana.Controllers
 
         public IActionResult Index()
         {
-
-
-
             List<ProductModel> products = ProductHandler.GetTopNineProducts().ToProductModelList();
 
             List<RestaurantModel> restaurants = RestaurantHandler.GetRandomNineRestaurant().ToRestaurantModelList();
@@ -30,7 +27,13 @@ namespace HazirKhana.Controllers
             ViewData["Products"] = products;
             ViewData["Restaurants"] = restaurants;
             ViewData["Cuisines"] = cuisines;
-            return View();
+
+            if (products != null && restaurants != null && cuisines != null )
+            {
+                return View();
+            }
+
+            return BadRequest();
         }
     }
 }

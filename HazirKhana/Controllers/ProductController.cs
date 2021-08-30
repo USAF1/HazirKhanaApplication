@@ -95,5 +95,8 @@ namespace HazirKhana.Controllers
             return Redirect($"/Product/RestauranAdminProductList/{manager.Restaurant.Id}");
 
         }
+
+
+
     }
 }

@@ -1,7 +1,8 @@
-body{
+body {
     font-family: 'Rubik';
     overflow-x: hidden;
 }
+
 .has-search .form-control {
     padding-left: 2.375rem;
 }
@@ -17,25 +18,27 @@ body{
     pointer-events: none;
     color: #aaa;
 }
-.searchbtn{
+
+.searchbtn {
     background-color: red;
     color: white;
     padding: 5px 30px;
     font-weight: 600;
     border: none;
 }
-.restaurantListCard{
+
+.restaurantListCard {
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
-.restaurantListCard:hover{
-    border: 3px solid orange;
-    animation: pulse;
-    animation-duration: 2s;
 
-}
-.restaurantDetailBtn{
+    .restaurantListCard:hover {
+        border: 3px solid orange;
+        animation: pulse;
+        animation-duration: 2s;
+    }
+
+.restaurantDetailBtn {
     background-color: #413c58;
     color: white;
     outline: none !important;
@@ -44,7 +47,8 @@ body{
     font-weight: 500;
     padding: 10px;
 }
-.viewRestaurantBtn{
+
+.viewRestaurantBtn {
     background-color: red;
     color: white;
     outline: none !important;
@@ -53,6 +57,7 @@ body{
     padding: 10px 30px;
     border-radius: 5px;
 }
+
 .line {
     background-color: #5e5e5e;
     border-radius: 12px;
@@ -61,32 +66,35 @@ body{
     margin: 0 0 51px;
     width: 100px;
 }
-#carouselExampleControls .carousel-inner .carousel-item a{
+
+#carouselExampleControls .carousel-inner .carousel-item a {
     text-decoration: none;
     color: black;
 }
+
 .badge {
     position: relative;
     border-radius: 60%;
-    background-color:rgb(236, 156, 99);
+    background-color: rgb(236, 156, 99);
     font-size: 11px;
     top: -13px !important;
     right: 10px;
- 
-  }
+}
 
-.multiplePills{
+.multiplePills {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     padding: 10px;
 }
-.multiplePills a{
-    text-decoration: none;
-    color: black;
-    margin-left: 20px;
-}
-.multiplePills .tab-item.active{
-    background-color: #413C58;
-    color: white;
-    font-size: 22px;
-    padding: 5px;
-}
+
+    .multiplePills a {
+        text-decoration: none;
+        color: black;
+        margin-left: 20px;
+    }
+
+    .multiplePills .tab-item.active {
+        background-color: #413C58;
+        color: white;
+        font-size: 22px;
+        padding: 5px;
+    }

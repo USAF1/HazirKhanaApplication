@@ -6,12 +6,14 @@
     margin: 0 4px 0 0;
     padding: 3px 6px;
 }
+
 .explore-outlets-search .form-control {
     border-radius: 2px !important;
     font-size: 15px;
     height: 50px;
     padding: 5px 20px;
 }
+
 .explore-outlets-search .btn {
     color: #777777;
     font-size: 15px;
@@ -21,6 +23,7 @@
     right: 0;
     text-decoration: none;
 }
+
 .mall-category-item {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 3px;
@@ -29,43 +32,51 @@
     text-align: center;
     padding: 0 0 7px 0;
 }
-.mall-category-item img {
-    height: 89px;
-    object-fit: cover;
-    width: 100%;
-}
-.mall-category-item h6 {
-    font-size: 14px;
-    font-weight: 500;
-    margin: 0;
-    padding: 10px 10px 3px 10px;
-}
-.mall-category-item .btn {
-    padding: 2px 8px;
-    font-size: 12px;
-    right: 7px;
-    top: 7px;
-}
-.mall-category-item small {
-    background: #ececec;
-    color: #f32129;
-    padding: 1px 6px;
-    border-radius: 2px;
-    font-size: 10px;
-}
-.mall-category-item:hover small {
-    background: #f32129;
-    color: #ffffff;
-}
+
+    .mall-category-item img {
+        height: 89px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .mall-category-item h6 {
+        font-size: 14px;
+        font-weight: 500;
+        margin: 0;
+        padding: 10px 10px 3px 10px;
+    }
+
+    .mall-category-item .btn {
+        padding: 2px 8px;
+        font-size: 12px;
+        right: 7px;
+        top: 7px;
+    }
+
+    .mall-category-item small {
+        background: #ececec;
+        color: #f32129;
+        padding: 1px 6px;
+        border-radius: 2px;
+        font-size: 10px;
+    }
+
+    .mall-category-item:hover small {
+        background: #f32129;
+        color: #ffffff;
+    }
+
 .address-map {
     border-radius: 2px;
     overflow: hidden;
 }
+
 .new-arrivals-card .card-img .new-arrivals {
     bottom: 11px;
     left: 12px;
     position: absolute;
 }
+
 .new-arrivals {
     background: #000 none repeat scroll 0 0;
     border-radius: 2px;
@@ -73,19 +84,23 @@
     padding: 1px 13px;
     text-transform: uppercase;
 }
+
 .new-arrivals-card .card-img {
     position: relative;
 }
+
 .total-like-user {
     border: 2px solid #fff;
     height: 34px;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
     width: 34px;
 }
+
 .total-like-user-main a {
     display: inline-block;
     margin: 0 -17px 0 0;
 }
+
 .total-like {
     border: 1px solid;
     border-radius: 50px;
@@ -96,35 +111,43 @@
     padding: 0 13px;
     vertical-align: top;
 }
+
 .restaurant-detailed-ratings-and-reviews hr {
     margin: 0 -24px;
 }
+
 .graph-star-rating-header .star-rating {
     font-size: 17px;
 }
+
 .progress {
     background: #f2f4f8 none repeat scroll 0 0;
     border-radius: 0;
     height: 30px;
 }
+
 .rating-list {
     display: inline-flex;
     margin-bottom: 15px;
     width: 100%;
 }
+
 .rating-list-left {
     height: 16px;
     line-height: 29px;
     width: 10%;
 }
+
 .rating-list-center {
     width: 80%;
 }
+
 .rating-list-right {
     line-height: 29px;
     text-align: right;
     width: 10%;
 }
+
 .restaurant-slider-pics {
     bottom: 0;
     font-size: 12px;
@@ -132,29 +155,35 @@
     z-index: 999;
     padding: 0 10px;
 }
+
 .restaurant-slider-view-all {
     bottom: 15px;
     right: 15px;
     z-index: 999;
 }
+
 .offer-dedicated-nav .nav-link.active,
 .offer-dedicated-nav .nav-link:hover,
 .offer-dedicated-nav .nav-link:focus {
     border-color: #3868fb;
     color: #3868fb;
 }
+
 .offer-dedicated-nav .nav-link {
     border-bottom: 2px solid #fff;
     color: #000000;
     padding: 16px 0;
     font-weight: 600;
 }
+
 .offer-dedicated-nav .nav-item {
     margin: 0 37px 0 0;
 }
+
 .restaurant-detailed-action-btn {
     margin-top: 12px;
 }
+
 .restaurant-detailed-header-right .btn-success {
     border-radius: 3px;
     height: 45px;
@@ -162,9 +191,11 @@
     min-width: 130px;
     padding: 7px;
 }
+
 .text-black {
     color: #000000;
 }
+
 .icon-overlap {
     bottom: -23px;
     font-size: 74px;
@@ -172,15 +203,17 @@
     position: absolute;
     right: -32px;
 }
+
 .menu-list img {
     width: 41px;
     height: 41px;
     object-fit: cover;
 }
+
 .restaurant-detailed-header-left img {
     width: 88px;
     height: 88px;
     border-radius: 3px;
     object-fit: cover;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
 }

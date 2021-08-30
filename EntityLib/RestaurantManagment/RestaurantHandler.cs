@@ -62,7 +62,15 @@ namespace EntityLib.RestaurantManagment
         {
             using (ApplicationDb context = new ApplicationDb())
             {
-                return (from Restaurant in context.Restaurants where Restaurant.Id == id select Restaurant).Include(x => x.Provience).Include(y => y.City).Include(z => z.CuisineRestaurants).ThenInclude(t=>t.Cuisines).Include(s => s.RestaurantCuisines).ThenInclude(r => r.Products).FirstOrDefault();
+                return (from Restaurant in context.Restaurants where Restaurant.Id == id select Restaurant).Include(x => x.Provience).Include(y => y.City).Include(z => z.CuisineRestaurants).ThenInclude(t=>t.Cuisines).FirstOrDefault();
+            }
+        }
+
+        public static Restaurant GetClientRestaurant(int id)
+        {
+            using (ApplicationDb context = new ApplicationDb())
+            {
+                return (from Restaurant in context.Restaurants where Restaurant.Id == id select Restaurant).Include(x => x.Provience).Include(y => y.City).Include(z => z.CuisineRestaurants).ThenInclude(t => t.Cuisines).Include(s => s.RestaurantCuisines).ThenInclude(r => r.Products).ThenInclude(a => a.Variations).FirstOrDefault();
             }
         }
 

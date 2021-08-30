@@ -1,0 +1,41 @@
+﻿@model IEnumerable<RestaurantCuisineModel>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 bg-white " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); background-color: #f2f2f2; border-radius: 10px;">
+
+            @foreach (var item in Model)
+            {
+                <h1 class="p-2 mx-5 mt-5">@item.Name</h1>
+
+                @for (int i = 0; i < item.Products.Count(); i++)
+                {
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex p-2 mt-2">
+                            <img src="data:image/jpg;base64,@item.Products[i].Image" width="100" height="90" alt="">
+                            <div>
+                                <p class="mx-3 mt-2">@item.Products[i].Name</p>
+                                @if (item.Products[i].Variations != null)
+                                {
+                                    <p class="mx-3 mt-2">@item.Products[i].Variations.Small : @item.Products[i].Variations.SmallPrice</p>
+                                }
+                                else
+                                {
+                                    <p class="mx-3 mt-2">Rs: @item.Products[i].Price</p>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="p-3 mt-5"> <a  asp-action="PopUp" asp-controller="Restaurant" asp-route-id="@item.Products[i].Id" class="showmodelArea"  style="text-decoration: none; color: black;"> <i class="bi bi-cart"></i></a></div>
+                    </div>
+                    <hr>
+
+
+
+                }
+            }
+        </div>
+    </div>
+</div>
+
